@@ -6,8 +6,8 @@ const WARNING_TIME = 5 * 60 * 1000; // Show warning 5 minutes before timeout
 
 export function useIdleTimeout(onWarning?: () => void) {
   const { status } = useSession();
-  const timeoutRef = useRef<NodeJS.Timeout>();
-  const warningTimeoutRef = useRef<NodeJS.Timeout>();
+  const timeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
+  const warningTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
 
   const resetTimer = useCallback(() => {
     // Clear existing timeouts

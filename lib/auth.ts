@@ -35,9 +35,9 @@ export const authOptions: NextAuthOptions = {
       }
       
       // Invalidate token if it's from a previous server instance
-      if (token.serverInstance !== SERVER_INSTANCE_ID) {
+      if (token.serverInstance && token.serverInstance !== SERVER_INSTANCE_ID) {
         console.log('Token from old server instance - invalidating');
-        return {}; // Force logout
+        return { ...token, exp: 0 }; // Force logout by expiring token
       }
       
       // Check if token has expired (7 days max session)
@@ -46,7 +46,7 @@ export const authOptions: NextAuthOptions = {
       
       if (tokenAge > maxAge) {
         // Token expired - force logout
-        return {}; // Return empty token to invalidate session
+        return { ...token, exp: 0 }; // Return expired token
       }
       
       // Check for idle timeout (1 hour of inactivity)
@@ -55,7 +55,7 @@ export const authOptions: NextAuthOptions = {
       
       if (timeSinceLastActivity > idleTimeout) {
         // Idle timeout - force logout
-        return {}; // Return empty token to invalidate session
+        return { ...token, exp: 0 }; // Return expired token
       }
       
       // Update last activity timestamp
