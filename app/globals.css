@@ -2,7 +2,10 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f172a;
+  --primary: #0ea5e9;
+  --primary-dark: #0284c7;
+  --accent: #d946ef;
 }
 
 @theme inline {
@@ -10,17 +13,106 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-primary-50: #f0f9ff;
+  --color-primary-500: #0ea5e9;
+  --color-primary-600: #0284c7;
+  --color-accent-500: #d946ef;
+  --color-accent-600: #c026d3;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0f172a;
+    --foreground: #f1f5f9;
   }
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* 3D Button Styles */
+.btn-3d {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: all 0.2s ease;
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.15),
+              0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn-3d:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 0 rgba(0, 0, 0, 0.15),
+              0 12px 20px rgba(0, 0, 0, 0.25);
+}
+
+.btn-3d:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.15),
+              0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-3d-primary {
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  color: white;
+  box-shadow: 0 6px 0 #1e40af,
+              0 8px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn-3d-primary:hover {
+  box-shadow: 0 8px 0 #1e40af,
+              0 12px 20px rgba(0, 0, 0, 0.35);
+}
+
+.btn-3d-primary:active {
+  box-shadow: 0 2px 0 #1e40af,
+              0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-3d-white {
+  background: white;
+  color: #1e40af;
+  font-weight: 700;
+  box-shadow: 0 6px 0 #d1d5db,
+              0 8px 12px rgba(0, 0, 0, 0.25);
+}
+
+.btn-3d-white:hover {
+  box-shadow: 0 8px 0 #d1d5db,
+              0 12px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn-3d-white:active {
+  box-shadow: 0 2px 0 #d1d5db,
+              0 4px 8px rgba(0, 0, 0, 0.2);
 }

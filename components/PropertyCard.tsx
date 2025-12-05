@@ -1,0 +1,182 @@
+'use client';
+
+import { useState } from 'react';
+import { Property } from '@/types/property';
+import Image from 'next/image';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { 
+  MapPin, 
+  Bed, 
+  Bath, 
+  Maximize, 
+  TrendingUp, 
+  DollarSign,
+  Check,
+  MessageCircle
+} from 'lucide-react';
+import ContactModal from './ContactModal';
+
+interface PropertyCardProps {
+  property: Property;
+  index?: number;
+}
+
+export default function PropertyCard({ property, index = 0 }: PropertyCardProps) {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+
+  const formatPrice = (price: number) => {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      maximumFractionDigits: 0,
+    }).format(price);
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 card-hover"
+    >
+      {/* Featured Badge */}
+      {property.featured && (
+        <div className="absolute top-4 left-4 z-10 px-3 py-1 bg-gradient-to-r from-[--accent] to-[--primary] text-white text-xs font-bold rounded-full">
+          FEATURED
+        </div>
+      )}
+
+      {/* Status Badge */}
+      <div className={`absolute top-4 right-4 z-10 px-3 py-1 text-xs font-bold rounded-full ${
+        property.status === 'Available' 
+          ? 'bg-green-500 text-white' 
+          : property.status === 'Pending'
+          ? 'bg-yellow-500 text-white'
+          : 'bg-gray-500 text-white'
+      }`}>
+        {property.status}
+      </div>
+
+      {/* Image */}
+      <Link href={`/properties/${property.id}`}>
+        <div className="relative h-64 overflow-hidden">
+          <Image
+            src={property.images[0]}
+            alt={property.title}
+            fill
+            className="object-cover group-hover:scale-110 transition-transform duration-500"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        </div>
+      </Link>
+
+      {/* Content */}
+      <div className="p-6 space-y-4">
+        {/* Title and Location */}
+        <div>
+          <Link href={`/properties/${property.id}`}>
+            <h3 className="text-xl font-bold text-gray-900 group-hover:text-[--primary] transition-colors line-clamp-1">
+              {property.title}
+            </h3>
+          </Link>
+          <div className="flex items-center mt-2 text-gray-600 text-sm">
+            <MapPin className="w-4 h-4 mr-1" />
+            <span>{property.location.city}, {property.location.state}</span>
+          </div>
+        </div>
+
+        {/* Property Type */}
+        <div className="inline-block px-3 py-1 bg-blue-50 text-blue-700 text-sm font-medium rounded-lg">
+          {property.type}
+        </div>
+
+        {/* Features */}
+        <div className="flex items-center justify-between text-gray-600 text-sm">
+          {property.features.bedrooms && (
+            <div className="flex items-center space-x-1">
+              <Bed className="w-4 h-4" />
+              <span>{property.features.bedrooms} Beds</span>
+            </div>
+          )}
+          {property.features.bathrooms && (
+            <div className="flex items-center space-x-1">
+              <Bath className="w-4 h-4" />
+              <span>{property.features.bathrooms} Baths</span>
+            </div>
+          )}
+          <div className="flex items-center space-x-1">
+            <Maximize className="w-4 h-4" />
+            <span>{property.features.sqft.toLocaleString()} sqft</span>
+          </div>
+        </div>
+
+        {/* Price and ROI */}
+        <div className="flex items-center justify-between pt-4 border-t">
+          <div>
+            <div className="flex items-center space-x-1 text-gray-500 text-xs mb-1">
+              <DollarSign className="w-3 h-3" />
+              <span>Price</span>
+            </div>
+            <div className="text-2xl font-bold text-gray-900">
+              {formatPrice(property.price)}
+            </div>
+          </div>
+          <div className="text-right">
+            <div className="flex items-center justify-end space-x-1 text-gray-500 text-xs mb-1">
+              <TrendingUp className="w-3 h-3" />
+              <span>ROI</span>
+            </div>
+            <div className="text-2xl font-bold text-green-600">
+              {property.roi}%
+            </div>
+          </div>
+        </div>
+
+        {/* Cash Flow */}
+        <div className="flex items-center justify-between p-3 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg">
+          <span className="text-sm font-medium text-gray-700">Monthly Cash Flow</span>
+          <span className="text-lg font-bold text-green-600">
+            {formatPrice(property.cashFlow)}
+          </span>
+        </div>
+
+        {/* Tenant Status */}
+        {property.tenantOccupied && (
+          <div className="flex items-center space-x-2 text-sm text-green-600">
+            <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center">
+              <Check className="w-4 h-4" />
+            </div>
+            <span className="font-medium">Tenant Occupied</span>
+          </div>
+        )}
+
+        {/* Action Buttons */}
+        <div className="grid grid-cols-2 gap-3">
+          <button
+            onClick={() => setIsContactModalOpen(true)}
+            className="flex items-center justify-center space-x-2 py-3 bg-emerald-600 text-white font-bold rounded-xl hover:bg-emerald-700 hover:shadow-xl transform hover:scale-[1.02] transition-all duration-200"
+          >
+            <MessageCircle className="w-4 h-4" />
+            <span>Contact</span>
+          </button>
+          <Link 
+            href={`/properties/${property.id}`}
+            className="flex items-center justify-center py-3 text-center bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 hover:shadow-xl transform hover:scale-[1.02] transition-all duration-200"
+          >
+            View Details
+          </Link>
+        </div>
+      </div>
+
+      {/* Contact Modal */}
+      <ContactModal
+        isOpen={isContactModalOpen}
+        onClose={() => setIsContactModalOpen(false)}
+        propertyId={property.id}
+        propertyTitle={property.title}
+        contact={property.contact}
+      />
+    </motion.div>
+  );
+}
