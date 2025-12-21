@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Phone, Calendar, Video, Mail, User } from 'lucide-react';
-import { useProperties } from '@/contexts/PropertyContext';
+import { X, Phone, Mail, User } from 'lucide-react';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -17,8 +16,6 @@ interface ContactModalProps {
   };
 }
 
-type ContactType = 'call' | 'visit' | 'video';
-
 export default function ContactModal({
   isOpen,
   onClose,
@@ -26,15 +23,11 @@ export default function ContactModal({
   propertyTitle,
   contact,
 }: ContactModalProps) {
-  const { updatePropertyStatus } = useProperties();
-  const [selectedType, setSelectedType] = useState<ContactType | null>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     message: '',
-    preferredDate: '',
-    preferredTime: '',
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -43,28 +36,19 @@ export default function ContactModal({
     // In a real app, this would send the data to an API
     console.log('Contact form submitted:', {
       ...formData,
-      contactType: selectedType,
       propertyTitle,
     });
-
-    // Mark property as Pending when visit is scheduled
-    if (selectedType === 'visit') {
-      updatePropertyStatus(propertyId, 'Pending');
-    }
 
     setIsSubmitted(true);
     
     // Reset form after 3 seconds
     setTimeout(() => {
       setIsSubmitted(false);
-      setSelectedType(null);
       setFormData({
         name: '',
         email: '',
         phone: '',
         message: '',
-        preferredDate: '',
-        preferredTime: '',
       });
       onClose();
     }, 3000);
@@ -77,30 +61,6 @@ export default function ContactModal({
   const handleDirectEmail = () => {
     window.location.href = `mailto:${contact.email}?subject=Inquiry about ${propertyTitle}`;
   };
-
-  const contactOptions = [
-    {
-      type: 'call' as ContactType,
-      icon: Phone,
-      title: 'Phone Call',
-      description: 'Schedule a phone consultation',
-      gradient: 'from-blue-500 to-cyan-500',
-    },
-    {
-      type: 'visit' as ContactType,
-      icon: Calendar,
-      title: 'Property Visit',
-      description: 'Schedule an in-person tour',
-      gradient: 'from-green-500 to-emerald-500',
-    },
-    {
-      type: 'video' as ContactType,
-      icon: Video,
-      title: 'Video Call',
-      description: 'Virtual property walkthrough',
-      gradient: 'from-purple-500 to-pink-500',
-    },
-  ];
 
   return (
     <AnimatePresence>
@@ -144,221 +104,128 @@ export default function ContactModal({
 
               <div className="p-6">
                 {!isSubmitted ? (
-                  <>
-                    {!selectedType ? (
-                      /* Contact Type Selection */
-                      <div className="space-y-6">
-                        {/* Agent Info */}
-                        <div className="flex items-center space-x-4 p-4 bg-gray-50 rounded-xl">
-                          <div className="w-12 h-12 bg-gradient-to-br from-[--primary] to-[--accent] rounded-full flex items-center justify-center">
-                            <User className="w-6 h-6 text-white" />
-                          </div>
-                          <div>
-                            <h3 className="font-bold text-gray-900">
-                              {contact.name}
-                            </h3>
-                            <p className="text-sm text-gray-600">
-                              Licensed Real Estate Agent
-                            </p>
-                          </div>
-                        </div>
-
-                        {/* Quick Contact Buttons */}
-                        <div className="grid grid-cols-2 gap-3">
-                          <button
-                            onClick={handleDirectCall}
-                            className="flex items-center justify-center space-x-2 p-4 border-2 border-blue-200 hover:border-blue-400 rounded-xl transition-all group"
-                          >
-                            <Phone className="w-5 h-5 text-blue-600 group-hover:scale-110 transition-transform" />
-                            <span className="font-medium text-gray-700">
-                              Call Now
-                            </span>
-                          </button>
-                          <button
-                            onClick={handleDirectEmail}
-                            className="flex items-center justify-center space-x-2 p-4 border-2 border-purple-200 hover:border-purple-400 rounded-xl transition-all group"
-                          >
-                            <Mail className="w-5 h-5 text-purple-600 group-hover:scale-110 transition-transform" />
-                            <span className="font-medium text-gray-700">
-                              Send Email
-                            </span>
-                          </button>
-                        </div>
-
-                        <div className="relative">
-                          <div className="absolute inset-0 flex items-center">
-                            <div className="w-full border-t border-gray-300" />
-                          </div>
-                          <div className="relative flex justify-center text-sm">
-                            <span className="px-4 bg-white text-gray-500">
-                              Or schedule an appointment
-                            </span>
-                          </div>
-                        </div>
-
-                        {/* Contact Options */}
-                        <div className="space-y-3">
-                          {contactOptions.map((option) => {
-                            const Icon = option.icon;
-                            return (
-                              <button
-                                key={option.type}
-                                onClick={() => setSelectedType(option.type)}
-                                className="w-full flex items-center space-x-4 p-4 border-2 border-gray-200 hover:border-transparent hover:shadow-lg rounded-xl transition-all group"
-                              >
-                                <div
-                                  className={`w-12 h-12 bg-gradient-to-br ${option.gradient} rounded-xl flex items-center justify-center transform group-hover:scale-110 transition-transform`}
-                                >
-                                  <Icon className="w-6 h-6 text-white" />
-                                </div>
-                                <div className="flex-1 text-left">
-                                  <h3 className="font-bold text-gray-900 group-hover:text-[--primary] transition-colors">
-                                    {option.title}
-                                  </h3>
-                                  <p className="text-sm text-gray-600">
-                                    {option.description}
-                                  </p>
-                                </div>
-                              </button>
-                            );
-                          })}
-                        </div>
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    {/* Agent Info */}
+                    <div className="flex items-center space-x-4 p-4 bg-gray-50 rounded-xl">
+                      <div className="w-12 h-12 bg-gradient-to-br from-[--primary] to-[--accent] rounded-full flex items-center justify-center">
+                        <User className="w-6 h-6 text-white" />
                       </div>
-                    ) : (
-                      /* Contact Form */
-                      <form onSubmit={handleSubmit} className="space-y-4">
-                        <button
-                          type="button"
-                          onClick={() => setSelectedType(null)}
-                          className="text-sm text-gray-600 hover:text-gray-900 flex items-center space-x-1"
-                        >
-                          <span>←</span>
-                          <span>Back</span>
-                        </button>
+                      <div>
+                        <h3 className="font-bold text-gray-900">
+                          {contact.name}
+                        </h3>
+                        <p className="text-sm text-gray-600">
+                          Licensed Real Estate Agent
+                        </p>
+                      </div>
+                    </div>
 
-                        <div className="p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl">
-                          <p className="text-sm font-medium text-gray-700">
-                            Booking:{' '}
-                            <span className="text-[--primary]">
-                              {
-                                contactOptions.find(
-                                  (o) => o.type === selectedType
-                                )?.title
-                              }
-                            </span>
-                          </p>
-                        </div>
+                    {/* Quick Contact Buttons */}
+                    <div className="grid grid-cols-2 gap-3">
+                      <button
+                        type="button"
+                        onClick={handleDirectCall}
+                        className="flex items-center justify-center space-x-2 p-4 border-2 border-blue-200 hover:border-blue-400 rounded-xl transition-all group"
+                      >
+                        <Phone className="w-5 h-5 text-blue-600 group-hover:scale-110 transition-transform" />
+                        <span className="font-medium text-gray-700">
+                          Call Now
+                        </span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={handleDirectEmail}
+                        className="flex items-center justify-center space-x-2 p-4 border-2 border-purple-200 hover:border-purple-400 rounded-xl transition-all group"
+                      >
+                        <Mail className="w-5 h-5 text-purple-600 group-hover:scale-110 transition-transform" />
+                        <span className="font-medium text-gray-700">
+                          Send Email
+                        </span>
+                      </button>
+                    </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                              Your Name *
-                            </label>
-                            <input
-                              type="text"
-                              required
-                              value={formData.name}
-                              onChange={(e) =>
-                                setFormData({ ...formData, name: e.target.value })
-                              }
-                              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[--primary] focus:border-transparent"
-                              placeholder="John Doe"
-                            />
-                          </div>
-                          <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                              Email *
-                            </label>
-                            <input
-                              type="email"
-                              required
-                              value={formData.email}
-                              onChange={(e) =>
-                                setFormData({ ...formData, email: e.target.value })
-                              }
-                              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[--primary] focus:border-transparent"
-                              placeholder="john@example.com"
-                            />
-                          </div>
-                        </div>
+                    <div className="relative">
+                      <div className="absolute inset-0 flex items-center">
+                        <div className="w-full border-t border-gray-300" />
+                      </div>
+                      <div className="relative flex justify-center text-sm">
+                        <span className="px-4 bg-white text-gray-500">
+                          Or send a message
+                        </span>
+                      </div>
+                    </div>
 
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Phone Number *
-                          </label>
-                          <input
-                            type="tel"
-                            required
-                            value={formData.phone}
-                            onChange={(e) =>
-                              setFormData({ ...formData, phone: e.target.value })
-                            }
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[--primary] focus:border-transparent"
-                            placeholder="(123) 456-7890"
-                          />
-                        </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Your Name *
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          value={formData.name}
+                          onChange={(e) =>
+                            setFormData({ ...formData, name: e.target.value })
+                          }
+                          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[--primary] focus:border-transparent"
+                          placeholder="John Doe"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                          Email *
+                        </label>
+                        <input
+                          type="email"
+                          required
+                          value={formData.email}
+                          onChange={(e) =>
+                            setFormData({ ...formData, email: e.target.value })
+                          }
+                          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[--primary] focus:border-transparent"
+                          placeholder="john@example.com"
+                        />
+                      </div>
+                    </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                              Preferred Date *
-                            </label>
-                            <input
-                              type="date"
-                              required
-                              value={formData.preferredDate}
-                              onChange={(e) =>
-                                setFormData({
-                                  ...formData,
-                                  preferredDate: e.target.value,
-                                })
-                              }
-                              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[--primary] focus:border-transparent"
-                            />
-                          </div>
-                          <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                              Preferred Time *
-                            </label>
-                            <input
-                              type="time"
-                              required
-                              value={formData.preferredTime}
-                              onChange={(e) =>
-                                setFormData({
-                                  ...formData,
-                                  preferredTime: e.target.value,
-                                })
-                              }
-                              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[--primary] focus:border-transparent"
-                            />
-                          </div>
-                        </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Phone Number *
+                      </label>
+                      <input
+                        type="tel"
+                        required
+                        value={formData.phone}
+                        onChange={(e) =>
+                          setFormData({ ...formData, phone: e.target.value })
+                        }
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[--primary] focus:border-transparent"
+                        placeholder="(123) 456-7890"
+                      />
+                    </div>
 
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Message (Optional)
-                          </label>
-                          <textarea
-                            value={formData.message}
-                            onChange={(e) =>
-                              setFormData({ ...formData, message: e.target.value })
-                            }
-                            rows={4}
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[--primary] focus:border-transparent"
-                            placeholder="Any specific questions or requirements?"
-                          />
-                        </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Message (Optional)
+                      </label>
+                      <textarea
+                        value={formData.message}
+                        onChange={(e) =>
+                          setFormData({ ...formData, message: e.target.value })
+                        }
+                        rows={4}
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[--primary] focus:border-transparent"
+                        placeholder="Any specific questions or requirements?"
+                      />
+                    </div>
 
-                        <button
-                          type="submit"
-                          className="w-full py-3 bg-gradient-to-r from-[--primary] to-[--accent] text-white font-medium rounded-xl hover:shadow-lg transform hover:scale-[1.02] transition-all duration-300"
-                        >
-                          Submit Request
-                        </button>
-                      </form>
-                    )}
-                  </>
+                    <button
+                      type="submit"
+                      className="w-full py-3 bg-gradient-to-r from-[--primary] to-[--accent] text-white font-medium rounded-xl hover:shadow-lg transform hover:scale-[1.02] transition-all duration-300"
+                    >
+                      Send Message
+                    </button>
+                  </form>
                 ) : (
                   /* Success Message */
                   <motion.div
@@ -382,11 +249,10 @@ export default function ContactModal({
                       </svg>
                     </div>
                     <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                      Request Submitted!
+                      Message Sent!
                     </h3>
                     <p className="text-gray-600 mb-4">
-                      {contact.name} will contact you shortly to confirm your
-                      appointment.
+                      {contact.name} will contact you shortly.
                     </p>
                     <p className="text-sm text-gray-500">
                       Check your email for confirmation details.

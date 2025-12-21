@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import SessionProvider from "@/components/SessionProvider";
 import SessionMonitor from "@/components/SessionMonitor";
 import SessionValidator from "@/components/SessionValidator";
@@ -18,8 +19,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PropertyHub - Detroit Real Estate Investment",
-  description: "Discover high-ROI turnkey real estate properties in Detroit. Above average returns with positive cash flow in 90 days.",
+  title: "PropertyHub - Real Estate Listings Platform",
+  description: "Browse and list real estate properties. Connect buyers with sellers for investment opportunities.",
 };
 
 export default function RootLayout({
@@ -38,6 +39,7 @@ export default function RootLayout({
             <SessionMonitor />
             <Navbar />
             {children}
+            <Footer />
           </PropertyProvider>
         </SessionProvider>
       </body>

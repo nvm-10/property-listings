@@ -156,7 +156,7 @@ Your authentication is now working with:
 5. Redirected back to app with role-specific dashboard
 
 ### Role System
-- **Buyers**: Browse properties, schedule visits, save favorites
+- **Buyers**: Browse properties, contact agents, save favorites
 - **Sellers**: Add properties, manage listings, view inquiries
 
 ### Session Management

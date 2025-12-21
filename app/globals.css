@@ -1,11 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #0f172a;
-  --primary: #0ea5e9;
-  --primary-dark: #0284c7;
-  --accent: #d946ef;
+  --background: #0a0f1e;
+  --background-secondary: #121827;
+  --background-tertiary: #1a2234;
+  --foreground: #f1f5f9;
+  --foreground-secondary: #cbd5e1;
+  --primary: #3b82f6;
+  --primary-dark: #2563eb;
+  --primary-light: #60a5fa;
+  --accent: #8b5cf6;
+  --accent-dark: #7c3aed;
+  --border: #1e293b;
+  --border-light: #334155;
 }
 
 @theme inline {
@@ -13,18 +20,11 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --color-primary-50: #f0f9ff;
-  --color-primary-500: #0ea5e9;
-  --color-primary-600: #0284c7;
-  --color-accent-500: #d946ef;
-  --color-accent-600: #c026d3;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0f172a;
-    --foreground: #f1f5f9;
-  }
+  --color-primary-50: #eff6ff;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-accent-500: #8b5cf6;
+  --color-accent-600: #7c3aed;
 }
 
 * {
@@ -40,13 +40,13 @@ body {
 }
 
 .glass-effect {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(18, 24, 39, 0.7);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(59, 130, 246, 0.2);
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, var(--primary), var(--accent));
+  background: linear-gradient(135deg, var(--primary-light), var(--accent));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -85,34 +85,37 @@ body {
 .btn-3d-primary {
   background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
   color: white;
-  box-shadow: 0 6px 0 #1e40af,
-              0 8px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 0 #1e3a8a,
+              0 8px 12px rgba(0, 0, 0, 0.5);
 }
 
 .btn-3d-primary:hover {
-  box-shadow: 0 8px 0 #1e40af,
-              0 12px 20px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 8px 0 #1e3a8a,
+              0 12px 20px rgba(0, 0, 0, 0.6);
 }
 
 .btn-3d-primary:active {
-  box-shadow: 0 2px 0 #1e40af,
-              0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 0 #1e3a8a,
+              0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 .btn-3d-white {
-  background: white;
-  color: #1e40af;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  color: white;
   font-weight: 700;
-  box-shadow: 0 6px 0 #d1d5db,
-              0 8px 12px rgba(0, 0, 0, 0.25);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.3),
+              0 8px 12px rgba(0, 0, 0, 0.4);
 }
 
 .btn-3d-white:hover {
-  box-shadow: 0 8px 0 #d1d5db,
-              0 12px 20px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 0 rgba(0, 0, 0, 0.3),
+              0 12px 20px rgba(0, 0, 0, 0.5);
 }
 
 .btn-3d-white:active {
-  box-shadow: 0 2px 0 #d1d5db,
-              0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3),
+              0 4px 8px rgba(0, 0, 0, 0.3);
 }

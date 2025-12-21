@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { TrendingUp, Building2, DollarSign, Users, ArrowRight, CheckCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
 import PropertyCard from '@/components/PropertyCard';
 import { useProperties } from '@/contexts/PropertyContext';
@@ -12,136 +12,94 @@ export default function Home() {
     .filter(p => p.featured)
     .slice(0, 3);
   
-  const stats = [
-    { label: 'Properties Sold', value: '500+', icon: Building2 },
-    { label: 'Average ROI', value: '12.5%', icon: TrendingUp },
-    { label: 'Total Investment', value: '$45M+', icon: DollarSign },
-    { label: 'Happy Investors', value: '1,200+', icon: Users },
-  ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-[--background]">
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image with Overlay */}
-        <div 
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: 'url(https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1920)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 via-purple-900/80 to-blue-900/90" />
+      <section className="relative pt-32 pb-20 overflow-hidden">
+        {/* Animated Background Pattern */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-[--background] via-blue-950/50 to-purple-950/50" />
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSg1OSwxMzAsMjQ2LDAuMSkiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')] opacity-40" />
+          
+          {/* Gradient Orbs */}
+          <div className="absolute top-1/4 -left-20 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl" />
+          <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl" />
         </div>
 
         {/* Content */}
-        <div className="relative z-10 container mx-auto px-4 text-center">
+        <div className="relative z-10 container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto"
+            className="max-w-4xl mx-auto text-center"
           >
+            {/* Badge */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              className="inline-block mb-6 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20"
+              transition={{ delay: 0.2 }}
+              className="inline-flex items-center space-x-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full mb-6"
             >
-              <span className="text-white text-sm font-medium">🏆 Detroit's #1 Real Estate Investment Platform</span>
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+              <span className="text-sm text-gray-300 font-medium">Live Property Listings</span>
             </motion.div>
 
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-              Turn Profits on
-              <span className="block mt-2">
-                <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-                  Turnkey Real Estate
-                </span>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+              Invest in{' '}
+              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                Turnkey Properties
               </span>
+              <br />with High ROI
             </h1>
 
-            <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-2xl mx-auto">
-              Above average returns with positive cash flow in 90 days. Start building your Detroit property portfolio today.
+            <p className="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+              Discover verified rental properties with positive cash flow. Connect directly with sellers and start building your portfolio.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
               <Link
                 href="/properties"
-                className="btn-3d btn-3d-primary group px-10 py-5 rounded-full font-bold text-lg flex items-center space-x-2"
+                className="btn-3d btn-3d-primary group px-8 py-4 rounded-xl font-bold text-base flex items-center space-x-2"
               >
-                <span>View Properties</span>
+                <span>Browse Properties</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link
-                href="/contact"
-                className="btn-3d btn-3d-white px-10 py-5 rounded-full text-lg flex items-center space-x-2"
+              <a
+                href="tel:1-866-964-6088"
+                className="px-8 py-4 bg-[--background-tertiary] border border-[--border-light] text-white rounded-xl font-semibold hover:bg-[--background-secondary] transition-all flex items-center space-x-2"
               >
-                <span>Get Started</span>
-                <ArrowRight className="w-5 h-5" />
-              </Link>
+                <span>Call: 1-866-964-6088</span>
+              </a>
             </div>
 
             {/* Key Features */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="mt-12 flex flex-wrap items-center justify-center gap-6 text-white"
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="flex flex-wrap items-center justify-center gap-6"
             >
-              {['Fully Renovated', 'Tenant Occupied', 'Positive Cash Flow', 'High ROI'].map((feature) => (
-                <div key={feature} className="flex items-center space-x-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
-                  <span className="font-medium">{feature}</span>
+              {[
+                { label: 'Fully Renovated', icon: CheckCircle },
+                { label: 'Tenant Occupied', icon: CheckCircle },
+                { label: 'Positive Cash Flow', icon: CheckCircle },
+                { label: 'High ROI', icon: CheckCircle }
+              ].map((feature) => (
+                <div key={feature.label} className="flex items-center space-x-2 text-gray-300">
+                  <feature.icon className="w-5 h-5 text-green-400" />
+                  <span className="text-sm font-medium">{feature.label}</span>
                 </div>
               ))}
             </motion.div>
           </motion.div>
         </div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 0.5 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ repeat: Infinity, duration: 1.5 }}
-            className="w-6 h-10 rounded-full border-2 border-white/30 flex items-start justify-center p-2"
-          >
-            <motion.div className="w-1 h-2 bg-white rounded-full" />
-          </motion.div>
-        </motion.div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="text-center"
-              >
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-[--primary] to-[--accent] text-white mb-4">
-                  <stat.icon className="w-8 h-8" />
-                </div>
-                <div className="text-4xl font-bold text-gray-900 mb-2">{stat.value}</div>
-                <div className="text-gray-600 font-medium">{stat.label}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Featured Properties */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-[--background-secondary]">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -150,11 +108,11 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
               Featured <span className="gradient-text">Properties</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Discover our handpicked selection of high-ROI investment properties in Detroit
+            <p className="text-xl text-[--foreground-secondary] max-w-2xl mx-auto">
+              Discover verified property listings from sellers
             </p>
           </motion.div>
 
@@ -183,8 +141,9 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-[--primary] via-purple-600 to-[--accent] text-white">
-        <div className="container mx-auto px-4 text-center">
+      <section className="py-20 bg-gradient-to-br from-blue-600 via-purple-600 to-violet-600 text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjEpIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-30"></div>
+        <div className="container mx-auto px-4 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -196,7 +155,7 @@ export default function Home() {
               Ready to Start Investing?
             </h2>
             <p className="text-xl mb-8 text-blue-100">
-              Join over 1,200 successful investors who trust PropertyHub for their Detroit real estate investments
+              Connect with property sellers and find your next investment opportunity
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <Link

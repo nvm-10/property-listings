@@ -24,10 +24,10 @@ export default function AdminDashboard() {
 
   if (status === 'loading') {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-[--background]">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-emerald-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading...</p>
+          <div className="w-16 h-16 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-gray-400">Loading...</p>
         </div>
       </div>
     );
@@ -36,10 +36,10 @@ export default function AdminDashboard() {
   // Show loading while redirecting non-admin users
   if (status === 'unauthenticated' || session?.user?.role !== 'admin') {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-[--background]">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-emerald-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-gray-600">Redirecting...</p>
+          <div className="w-16 h-16 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-gray-400">Redirecting...</p>
         </div>
       </div>
     );
@@ -86,7 +86,7 @@ export default function AdminDashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-emerald-50 to-slate-100 py-20 px-4">
+    <div className="min-h-screen bg-[--background] pt-20 pb-0 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -94,10 +94,10 @@ export default function AdminDashboard() {
           animate={{ opacity: 1, y: 0 }}
           className="mb-8"
         >
-          <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+          <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
             Admin Dashboard
           </h1>
-          <p className="text-gray-600">
+          <p className="text-gray-400">
             Manage all property listings and system settings
           </p>
         </motion.div>
@@ -108,52 +108,52 @@ export default function AdminDashboard() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="bg-white rounded-2xl shadow-lg p-6 border-l-4 border-emerald-500"
+            className="bg-[--background-secondary] border border-[--border] rounded-2xl shadow-xl p-6 border-l-4 border-emerald-500"
           >
             <div className="flex items-center justify-between mb-2">
-              <span className="text-gray-600 text-sm font-medium">Total Properties</span>
+              <span className="text-gray-400 text-sm font-medium">Total Properties</span>
               <Building2 className="w-5 h-5 text-emerald-600" />
             </div>
-            <p className="text-3xl font-bold text-gray-900">{stats.total}</p>
+            <p className="text-3xl font-bold text-white">{stats.total}</p>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="bg-white rounded-2xl shadow-lg p-6 border-l-4 border-blue-500"
+            className="bg-[--background-secondary] border border-[--border] rounded-2xl shadow-xl p-6 border-l-4 border-blue-500"
           >
             <div className="flex items-center justify-between mb-2">
-              <span className="text-gray-600 text-sm font-medium">Available</span>
+              <span className="text-gray-400 text-sm font-medium">Available</span>
               <Eye className="w-5 h-5 text-blue-600" />
             </div>
-            <p className="text-3xl font-bold text-gray-900">{stats.available}</p>
+            <p className="text-3xl font-bold text-white">{stats.available}</p>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="bg-white rounded-2xl shadow-lg p-6 border-l-4 border-yellow-500"
+            className="bg-[--background-secondary] border border-[--border] rounded-2xl shadow-xl p-6 border-l-4 border-yellow-500"
           >
             <div className="flex items-center justify-between mb-2">
-              <span className="text-gray-600 text-sm font-medium">Pending</span>
+              <span className="text-gray-400 text-sm font-medium">Pending</span>
               <Calendar className="w-5 h-5 text-yellow-600" />
             </div>
-            <p className="text-3xl font-bold text-gray-900">{stats.pending}</p>
+            <p className="text-3xl font-bold text-white">{stats.pending}</p>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="bg-white rounded-2xl shadow-lg p-6 border-l-4 border-green-500"
+            className="bg-[--background-secondary] border border-[--border] rounded-2xl shadow-xl p-6 border-l-4 border-green-500"
           >
             <div className="flex items-center justify-between mb-2">
-              <span className="text-gray-600 text-sm font-medium">Sold</span>
+              <span className="text-gray-400 text-sm font-medium">Sold</span>
               <DollarSign className="w-5 h-5 text-green-600" />
             </div>
-            <p className="text-3xl font-bold text-gray-900">{stats.sold}</p>
+            <p className="text-3xl font-bold text-white">{stats.sold}</p>
           </motion.div>
         </div>
 
@@ -162,9 +162,9 @@ export default function AdminDashboard() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="bg-white rounded-2xl shadow-lg p-6 mb-8"
+          className="bg-[--background-secondary] border border-[--border] rounded-2xl shadow-xl p-6 mb-8"
         >
-          <h2 className="text-xl font-bold text-gray-900 mb-4">Quick Actions</h2>
+          <h2 className="text-xl font-bold text-white mb-4">Quick Actions</h2>
           <div className="flex flex-wrap gap-4">
             <Link
               href="/dashboard/seller"
@@ -192,35 +192,35 @@ export default function AdminDashboard() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
-          className="bg-white rounded-2xl shadow-lg overflow-hidden"
+          className="bg-[--background-secondary] border border-[--border] rounded-2xl shadow-xl overflow-hidden"
         >
           <div className="p-6 border-b">
-            <h2 className="text-2xl font-bold text-gray-900">All Property Listings</h2>
-            <p className="text-gray-600 text-sm mt-1">Manage, edit, or delete any property</p>
+            <h2 className="text-2xl font-bold text-white">All Property Listings</h2>
+            <p className="text-gray-400 text-sm mt-1">Manage, edit, or delete any property</p>
           </div>
 
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-gray-50 border-b">
+              <thead className="bg-[--background-tertiary] border-b">
                 <tr>
-                  <th className="px-6 py-4 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
+                  <th className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                     Property
                   </th>
-                  <th className="px-6 py-4 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
+                  <th className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                     Details
                   </th>
-                  <th className="px-6 py-4 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
+                  <th className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                     Status
                   </th>
-                  <th className="px-6 py-4 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
+                  <th className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                     Listed
                   </th>
-                  <th className="px-6 py-4 text-right text-xs font-medium text-gray-600 uppercase tracking-wider">
+                  <th className="px-6 py-4 text-right text-xs font-medium text-gray-400 uppercase tracking-wider">
                     Actions
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200">
+              <tbody className="divide-y divide-[--border]">
                 {properties.length === 0 ? (
                   <tr>
                     <td colSpan={5} className="px-6 py-12 text-center text-gray-500">
@@ -229,10 +229,10 @@ export default function AdminDashboard() {
                   </tr>
                 ) : (
                   properties.map((property) => (
-                    <tr key={property.id} className="hover:bg-gray-50 transition-colors">
+                    <tr key={property.id} className="hover:bg-[--background-tertiary] transition-colors">
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-4">
-                          <div className="w-20 h-20 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0">
+                          <div className="w-20 h-20 rounded-lg overflow-hidden bg-[--background-tertiary] flex-shrink-0">
                             {property.images && property.images.length > 0 ? (
                               <img
                                 src={property.images[0]}
@@ -246,7 +246,7 @@ export default function AdminDashboard() {
                             )}
                           </div>
                           <div>
-                            <h3 className="font-semibold text-gray-900">{property.title}</h3>
+                            <h3 className="font-semibold text-white">{property.title}</h3>
                             <div className="flex items-center gap-1 text-sm text-gray-500 mt-1">
                               <MapPin className="w-3 h-3" />
                               <span>{property.location.city}, {property.location.state}</span>
@@ -258,9 +258,9 @@ export default function AdminDashboard() {
                         <div className="space-y-1">
                           <div className="flex items-center gap-2 text-sm">
                             <DollarSign className="w-4 h-4 text-gray-400" />
-                            <span className="font-semibold text-gray-900">{formatPrice(property.price)}</span>
+                            <span className="font-semibold text-white">{formatPrice(property.price)}</span>
                           </div>
-                          <div className="flex items-center gap-2 text-sm text-gray-600">
+                          <div className="flex items-center gap-2 text-sm text-gray-400">
                             <TrendingUp className="w-4 h-4 text-gray-400" />
                             <span>{property.roi}% ROI</span>
                           </div>
@@ -284,7 +284,7 @@ export default function AdminDashboard() {
                         </select>
                       </td>
                       <td className="px-6 py-4">
-                        <div className="flex items-center gap-2 text-sm text-gray-600">
+                        <div className="flex items-center gap-2 text-sm text-gray-400">
                           <Calendar className="w-4 h-4 text-gray-400" />
                           <span>{formatDate(property.createdAt)}</span>
                         </div>
@@ -329,11 +329,11 @@ export default function AdminDashboard() {
                 <Trash2 className="w-6 h-6 text-red-600" />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-gray-900">Delete Property</h3>
-                <p className="text-sm text-gray-600">This action cannot be undone</p>
+                <h3 className="text-xl font-bold text-white">Delete Property</h3>
+                <p className="text-sm text-gray-400">This action cannot be undone</p>
               </div>
             </div>
-            <p className="text-gray-700 mb-6">
+            <p className="text-gray-300 mb-6">
               Are you sure you want to delete this property? All data will be permanently removed.
             </p>
             <div className="flex gap-3">

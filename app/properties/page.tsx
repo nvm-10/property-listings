@@ -95,41 +95,50 @@ export default function PropertiesPage() {
   const hasActiveFilters = city !== 'all' || minPrice || maxPrice || minBedrooms || minBathrooms || minROI;
 
   return (
-    <div className="min-h-screen pt-20 pb-20">
+    <div className="min-h-screen pt-20 pb-0 bg-[--background]">
       {/* Header */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
-        <div className="container mx-auto px-4">
+      <section className="relative pt-32 pb-16 bg-gradient-to-br from-[--background] via-blue-950/50 to-purple-950/50 text-white overflow-hidden border-b border-[--border]">
+        {/* Animated Background Pattern */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSg1OSwxMzAsMjQ2LDAuMSkiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')] opacity-40" />
+          
+          {/* Gradient Orbs */}
+          <div className="absolute top-1/2 -left-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-1/2 -right-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto text-center"
           >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
               Investment Properties
             </h1>
-            <p className="text-xl text-blue-100">
-              Browse our extensive portfolio of turnkey real estate opportunities in Detroit
+            <p className="text-lg md:text-xl text-gray-400">
+              Browse {filteredProperties.length} available investment opportunities with high ROI
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* Filters */}
-      <section className="py-6 bg-white border-b sticky top-20 z-40 shadow-sm">
+      <section className="py-6 bg-[--background-secondary] border-b border-[--border] sticky top-20 z-40 shadow-xl">
         <div className="container mx-auto px-4">
           <div className="flex flex-col gap-4">
             {/* Main Filter Row */}
             <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
             {/* Search */}
             <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
               <input
                 type="text"
                 placeholder="Search properties..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[--primary] focus:border-transparent outline-none transition"
+                className="w-full pl-10 pr-4 py-3 bg-[--background-tertiary] border border-[--border-light] text-white placeholder-gray-500 rounded-xl focus:ring-2 focus:ring-[--primary] focus:border-transparent outline-none transition"
               />
             </div>
 
@@ -138,7 +147,7 @@ export default function PropertiesPage() {
                 <select
                   value={filterType}
                   onChange={(e) => setFilterType(e.target.value)}
-                  className="px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[--primary] focus:border-transparent outline-none bg-white"
+                  className="px-4 py-3 bg-[--background-tertiary] border border-[--border-light] text-white rounded-xl focus:ring-2 focus:ring-[--primary] focus:border-transparent outline-none"
                 >
                   {propertyTypes.map(type => (
                     <option key={type} value={type}>
@@ -152,7 +161,7 @@ export default function PropertiesPage() {
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[--primary] focus:border-transparent outline-none bg-white"
+                className="px-4 py-3 bg-[--background-tertiary] border border-[--border-light] text-white rounded-xl focus:ring-2 focus:ring-[--primary] focus:border-transparent outline-none"
               >
                 <option value="featured">Featured First</option>
                 <option value="price-low">Price: Low to High</option>
@@ -165,8 +174,8 @@ export default function PropertiesPage() {
                 onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}
                 className={`flex items-center space-x-2 px-4 py-3 rounded-xl font-medium transition-all ${
                   showAdvancedFilters || hasActiveFilters
-                    ? 'bg-[--primary] text-white'
-                    : 'border border-gray-300 text-gray-700 hover:bg-gray-50'
+                    ? 'bg-gradient-to-r from-[--primary] to-[--accent] text-white'
+                    : 'border border-[--border-light] text-gray-300 hover:bg-[--background-tertiary]'
                 }`}
               >
                 <SlidersHorizontal className="w-5 h-5" />
@@ -187,13 +196,13 @@ export default function PropertiesPage() {
                   transition={{ duration: 0.3 }}
                   className="overflow-hidden"
                 >
-                  <div className="pt-4 border-t">
+                  <div className="pt-4 border-t border-[--border-light]">
                     <div className="flex items-center justify-between mb-4">
-                      <h3 className="text-lg font-bold text-gray-900">Advanced Filters</h3>
+                      <h3 className="text-lg font-bold text-white">Advanced Filters</h3>
                       {hasActiveFilters && (
                         <button
                           onClick={clearAdvancedFilters}
-                          className="text-sm text-[--primary] hover:underline flex items-center space-x-1"
+                          className="text-sm text-[--primary-light] hover:text-[--primary] hover:underline flex items-center space-x-1"
                         >
                           <X className="w-4 h-4" />
                           <span>Clear All</span>
@@ -204,14 +213,14 @@ export default function PropertiesPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                       {/* City Filter */}
                       <div>
-                        <label className="flex items-center text-sm font-medium text-gray-700 mb-2">
-                          <MapPin className="w-4 h-4 mr-1 text-gray-500" />
+                        <label className="flex items-center text-sm font-medium text-gray-300 mb-2">
+                          <MapPin className="w-4 h-4 mr-1 text-gray-400" />
                           City
                         </label>
                         <select
                           value={city}
                           onChange={(e) => setCity(e.target.value)}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[--primary] focus:border-transparent outline-none bg-white"
+                          className="w-full px-3 py-2 bg-[--background-tertiary] border border-[--border-light] text-white rounded-lg focus:ring-2 focus:ring-[--primary] focus:border-transparent outline-none"
                         >
                           {cities.map(c => (
                             <option key={c} value={c}>
@@ -223,8 +232,8 @@ export default function PropertiesPage() {
 
                       {/* Min Price */}
                       <div>
-                        <label className="flex items-center text-sm font-medium text-gray-700 mb-2">
-                          <DollarSign className="w-4 h-4 mr-1 text-gray-500" />
+                        <label className="flex items-center text-sm font-medium text-gray-300 mb-2">
+                          <DollarSign className="w-4 h-4 mr-1 text-gray-400" />
                           Min Price
                         </label>
                         <input
@@ -232,14 +241,14 @@ export default function PropertiesPage() {
                           placeholder="e.g. 50000"
                           value={minPrice}
                           onChange={(e) => setMinPrice(e.target.value)}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[--primary] focus:border-transparent outline-none"
+                          className="w-full px-3 py-2 bg-[--background-tertiary] border border-[--border-light] text-white placeholder-gray-500 rounded-lg focus:ring-2 focus:ring-[--primary] focus:border-transparent outline-none"
                         />
                       </div>
 
                       {/* Max Price */}
                       <div>
-                        <label className="flex items-center text-sm font-medium text-gray-700 mb-2">
-                          <DollarSign className="w-4 h-4 mr-1 text-gray-500" />
+                        <label className="flex items-center text-sm font-medium text-gray-300 mb-2">
+                          <DollarSign className="w-4 h-4 mr-1 text-gray-400" />
                           Max Price
                         </label>
                         <input
@@ -247,14 +256,14 @@ export default function PropertiesPage() {
                           placeholder="e.g. 200000"
                           value={maxPrice}
                           onChange={(e) => setMaxPrice(e.target.value)}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[--primary] focus:border-transparent outline-none"
+                          className="w-full px-3 py-2 bg-[--background-tertiary] border border-[--border-light] text-white placeholder-gray-500 rounded-lg focus:ring-2 focus:ring-[--primary] focus:border-transparent outline-none"
                         />
                       </div>
 
                       {/* Min ROI */}
                       <div>
-                        <label className="flex items-center text-sm font-medium text-gray-700 mb-2">
-                          <TrendingUp className="w-4 h-4 mr-1 text-gray-500" />
+                        <label className="flex items-center text-sm font-medium text-gray-300 mb-2">
+                          <TrendingUp className="w-4 h-4 mr-1 text-gray-400" />
                           Min ROI %
                         </label>
                         <input
@@ -262,20 +271,20 @@ export default function PropertiesPage() {
                           placeholder="e.g. 10"
                           value={minROI}
                           onChange={(e) => setMinROI(e.target.value)}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[--primary] focus:border-transparent outline-none"
+                          className="w-full px-3 py-2 bg-[--background-tertiary] border border-[--border-light] text-white placeholder-gray-500 rounded-lg focus:ring-2 focus:ring-[--primary] focus:border-transparent outline-none"
                         />
                       </div>
 
                       {/* Min Bedrooms */}
                       <div>
-                        <label className="flex items-center text-sm font-medium text-gray-700 mb-2">
-                          <Bed className="w-4 h-4 mr-1 text-gray-500" />
+                        <label className="flex items-center text-sm font-medium text-gray-300 mb-2">
+                          <Bed className="w-4 h-4 mr-1 text-gray-400" />
                           Min Bedrooms
                         </label>
                         <select
                           value={minBedrooms}
                           onChange={(e) => setMinBedrooms(e.target.value)}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[--primary] focus:border-transparent outline-none bg-white"
+                          className="w-full px-3 py-2 bg-[--background-tertiary] border border-[--border-light] text-white rounded-lg focus:ring-2 focus:ring-[--primary] focus:border-transparent outline-none"
                         >
                           <option value="">Any</option>
                           <option value="1">1+</option>
@@ -288,14 +297,14 @@ export default function PropertiesPage() {
 
                       {/* Min Bathrooms */}
                       <div>
-                        <label className="flex items-center text-sm font-medium text-gray-700 mb-2">
-                          <Bed className="w-4 h-4 mr-1 text-gray-500" />
+                        <label className="flex items-center text-sm font-medium text-gray-300 mb-2">
+                          <Bed className="w-4 h-4 mr-1 text-gray-400" />
                           Min Bathrooms
                         </label>
                         <select
                           value={minBathrooms}
                           onChange={(e) => setMinBathrooms(e.target.value)}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[--primary] focus:border-transparent outline-none bg-white"
+                          className="w-full px-3 py-2 bg-[--background-tertiary] border border-[--border-light] text-white rounded-lg focus:ring-2 focus:ring-[--primary] focus:border-transparent outline-none"
                         >
                           <option value="">Any</option>
                           <option value="1">1+</option>
@@ -312,14 +321,14 @@ export default function PropertiesPage() {
           </div>
 
           {/* Results Count */}
-          <div className="mt-4 text-center text-gray-600">
+          <div className="mt-4 text-center text-gray-400">
             Showing {filteredProperties.length} {filteredProperties.length === 1 ? 'property' : 'properties'}
           </div>
         </div>
       </section>
 
       {/* Properties Grid */}
-      <section className="py-12">
+      <section className="py-12 bg-[--background]">
         <div className="container mx-auto px-4">
           {filteredProperties.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -330,8 +339,8 @@ export default function PropertiesPage() {
           ) : (
             <div className="text-center py-20">
               <div className="text-6xl mb-4">🏠</div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">No properties found</h3>
-              <p className="text-gray-600">Try adjusting your search or filters</p>
+              <h3 className="text-2xl font-bold text-white mb-2">No properties found</h3>
+              <p className="text-gray-400">Try adjusting your search or filters</p>
             </div>
           )}
         </div>

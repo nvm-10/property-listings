@@ -27,7 +27,7 @@ export default function ClosedDealsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 py-20 px-4">
+    <div className="min-h-screen bg-[--background] pt-20 pb-0 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -35,10 +35,10 @@ export default function ClosedDealsPage() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
         >
-          <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
             Closed Deals
           </h1>
-          <p className="text-xl text-gray-600 mb-2">
+          <p className="text-xl text-gray-300 mb-2">
             Recently sold and pending properties
           </p>
           <p className="text-gray-500">
@@ -53,11 +53,11 @@ export default function ClosedDealsPage() {
             animate={{ opacity: 1 }}
             className="text-center py-20"
           >
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-blue-100 mb-6">
-              <Building2 className="w-10 h-10 text-blue-600" />
+            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-blue-500/20 border border-blue-500/30 mb-6">
+              <Building2 className="w-10 h-10 text-blue-400" />
             </div>
-            <h3 className="text-2xl font-semibold text-gray-800 mb-2">No Closed Deals Yet</h3>
-            <p className="text-gray-600 mb-8">Check back soon to see completed transactions</p>
+            <h3 className="text-2xl font-semibold text-white mb-2">No Closed Deals Yet</h3>
+            <p className="text-gray-400 mb-8">Check back soon to see completed transactions</p>
             <Link
               href="/properties"
               className="btn-3d-primary inline-flex items-center gap-2 px-8 py-4 text-lg font-semibold"
@@ -74,11 +74,11 @@ export default function ClosedDealsPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
+                className="bg-[--background-secondary] border border-[--border] rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden"
               >
                 <div className="grid md:grid-cols-[300px_1fr] gap-6 p-6">
                   {/* Property Image */}
-                  <div className="relative h-64 md:h-auto rounded-xl overflow-hidden bg-gray-100">
+                  <div className="relative h-64 md:h-auto rounded-xl overflow-hidden bg-[--background-tertiary]">
                     {property.images && property.images.length > 0 ? (
                       <img
                         src={property.images[0]}
@@ -112,10 +112,10 @@ export default function ClosedDealsPage() {
                     <div>
                       <div className="flex items-start justify-between mb-4">
                         <div>
-                          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                          <h2 className="text-2xl font-bold text-white mb-2">
                             {property.title}
                           </h2>
-                          <div className="flex items-center gap-2 text-gray-600 mb-2">
+                          <div className="flex items-center gap-2 text-gray-400 mb-2">
                             <MapPin className="w-4 h-4 flex-shrink-0" />
                             <span className="text-sm">
                               {property.location.address}, {property.location.city}, {property.location.state} {property.location.zipCode}
@@ -132,49 +132,49 @@ export default function ClosedDealsPage() {
 
                       {/* Key Stats Grid */}
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                        <div className="bg-blue-50 rounded-lg p-4">
-                          <div className="flex items-center gap-2 text-blue-600 mb-1">
+                        <div className="bg-blue-500/20 border border-blue-500/30 rounded-lg p-4">
+                          <div className="flex items-center gap-2 text-blue-400 mb-1">
                             <DollarSign className="w-4 h-4" />
                             <span className="text-xs font-medium">Price</span>
                           </div>
-                          <p className="text-lg font-bold text-gray-900">
+                          <p className="text-lg font-bold text-white">
                             {formatPrice(property.price)}
                           </p>
                         </div>
 
-                        <div className="bg-purple-50 rounded-lg p-4">
-                          <div className="flex items-center gap-2 text-purple-600 mb-1">
+                        <div className="bg-purple-500/20 border border-purple-500/30 rounded-lg p-4">
+                          <div className="flex items-center gap-2 text-purple-400 mb-1">
                             <TrendingUp className="w-4 h-4" />
                             <span className="text-xs font-medium">ROI</span>
                           </div>
-                          <p className="text-lg font-bold text-gray-900">
+                          <p className="text-lg font-bold text-white">
                             {property.roi}%
                           </p>
                         </div>
 
-                        <div className="bg-green-50 rounded-lg p-4">
-                          <div className="flex items-center gap-2 text-green-600 mb-1">
+                        <div className="bg-green-500/20 border border-green-500/30 rounded-lg p-4">
+                          <div className="flex items-center gap-2 text-green-400 mb-1">
                             <DollarSign className="w-4 h-4" />
                             <span className="text-xs font-medium">Cash Flow</span>
                           </div>
-                          <p className="text-lg font-bold text-gray-900">
+                          <p className="text-lg font-bold text-white">
                             {formatPrice(property.cashFlow)}/mo
                           </p>
                         </div>
 
-                        <div className="bg-orange-50 rounded-lg p-4">
-                          <div className="flex items-center gap-2 text-orange-600 mb-1">
+                        <div className="bg-orange-500/20 border border-orange-500/30 rounded-lg p-4">
+                          <div className="flex items-center gap-2 text-orange-400 mb-1">
                             <Building2 className="w-4 h-4" />
                             <span className="text-xs font-medium">Type</span>
                           </div>
-                          <p className="text-sm font-bold text-gray-900">
+                          <p className="text-sm font-bold text-white">
                             {property.type}
                           </p>
                         </div>
                       </div>
 
                       {/* Property Features */}
-                      <div className="flex flex-wrap gap-4 text-sm text-gray-600 mb-6">
+                      <div className="flex flex-wrap gap-4 text-sm text-gray-400 mb-6">
                         {property.features.bedrooms && (
                           <span>{property.features.bedrooms} bed</span>
                         )}
@@ -194,7 +194,7 @@ export default function ClosedDealsPage() {
                     </div>
 
                     {/* Agent Contact Section */}
-                    <div className="border-t pt-4">
+                    <div className="border-t border-[--border-light] pt-4">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-4">
                           <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center text-white font-bold">
@@ -202,20 +202,20 @@ export default function ClosedDealsPage() {
                           </div>
                           <div>
                             <p className="text-sm text-gray-500">Listing Agent</p>
-                            <p className="font-semibold text-gray-900">{property.contact.name}</p>
+                            <p className="font-semibold text-white">{property.contact.name}</p>
                           </div>
                         </div>
                         <div className="flex items-center gap-2">
                           <a
                             href={`tel:${property.contact.phone}`}
-                            className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+                            className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all text-sm font-medium"
                           >
                             <Phone className="w-4 h-4" />
                             Call
                           </a>
                           <a
                             href={`mailto:${property.contact.email}`}
-                            className="inline-flex items-center gap-2 px-4 py-2 bg-white border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors text-sm font-medium"
+                            className="inline-flex items-center gap-2 px-4 py-2 bg-[--background-tertiary] border-2 border-blue-500/30 text-blue-400 rounded-lg hover:bg-[--background] transition-all text-sm font-medium"
                           >
                             <Mail className="w-4 h-4" />
                             Email

@@ -18,9 +18,9 @@ import {
   Mail,
   ArrowLeft,
   Check,
-  Heart,
-  Share2,
-  Star
+  Home,
+  Star,
+  User
 } from 'lucide-react';
 import { useProperties } from '@/contexts/PropertyContext';
 import ContactModal from '@/components/ContactModal';
@@ -46,10 +46,10 @@ export default function PropertyDetailPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-[--background]">
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-[--primary] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading property...</p>
+          <p className="text-gray-400">Loading property...</p>
         </div>
       </div>
     );
@@ -57,11 +57,11 @@ export default function PropertyDetailPage() {
 
   if (!property) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-[--background]">
         <div className="text-center">
           <div className="text-6xl mb-4">🏠</div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">Property Not Found</h2>
-          <p className="text-gray-600 mb-6">This property may have been sold or removed</p>
+          <h2 className="text-2xl font-bold text-white mb-2">Property Not Found</h2>
+          <p className="text-gray-400 mb-6">This property may have been sold or removed</p>
           <Link
             href="/properties"
             className="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-[--primary] to-[--accent] text-white rounded-xl font-medium hover:shadow-lg transition-all"
@@ -83,19 +83,19 @@ export default function PropertyDetailPage() {
   };
 
   return (
-    <div className="min-h-screen pt-20 pb-20 bg-gray-50">
+    <div className="min-h-screen pt-20 pb-0 bg-[--background]">
       {/* Back Button */}
       <div className="container mx-auto px-4 py-6">
         <Link
           href="/properties"
-          className="inline-flex items-center space-x-2 text-gray-600 hover:text-[--primary] transition-colors"
+          className="inline-flex items-center space-x-2 text-gray-400 hover:text-white transition-colors"
         >
           <ArrowLeft className="w-5 h-5" />
           <span>Back to Properties</span>
         </Link>
       </div>
 
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 pb-12">
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Left Column - Images & Details */}
           <div className="lg:col-span-2 space-y-6">
@@ -163,53 +163,62 @@ export default function PropertyDetailPage() {
 
             {/* Title & Location */}
             <div>
-              <h1 className="text-4xl font-bold text-gray-900 mb-4">
+              <h1 className="text-4xl font-bold text-white mb-4">
                 {property.title}
               </h1>
-              <div className="flex items-center text-gray-600 text-lg mb-4">
+              <div className="flex items-center text-gray-400 text-lg mb-4">
                 <MapPin className="w-5 h-5 mr-2" />
                 <span>{property.location.address}, {property.location.city}, {property.location.state} {property.location.zipCode}</span>
               </div>
-              <div className="inline-block px-4 py-2 bg-blue-100 text-blue-700 rounded-lg font-medium">
+              <div className="inline-block px-4 py-2 bg-blue-500/20 border border-blue-500/30 text-blue-300 rounded-lg font-medium">
                 {property.type}
               </div>
             </div>
 
             {/* Key Features */}
-            <div className="bg-white rounded-2xl shadow-lg p-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Property Features</h2>
+            <div className="bg-[--background-secondary] border border-[--border] rounded-2xl shadow-xl p-6">
+              <h2 className="text-2xl font-bold text-white mb-4">Property Features</h2>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {property.features.bedrooms && (
-                  <div className="flex items-center space-x-3 p-4 bg-gray-50 rounded-xl">
+                  <div className="flex items-center space-x-3 p-4 bg-[--background-tertiary] rounded-xl">
                     <Bed className="w-6 h-6 text-[--primary]" />
                     <div>
-                      <div className="font-bold text-gray-900">{property.features.bedrooms}</div>
-                      <div className="text-sm text-gray-600">Bedrooms</div>
+                      <div className="font-bold text-white">{property.features.bedrooms}</div>
+                      <div className="text-sm text-gray-400">Bedrooms</div>
                     </div>
                   </div>
                 )}
                 {property.features.bathrooms && (
-                  <div className="flex items-center space-x-3 p-4 bg-gray-50 rounded-xl">
+                  <div className="flex items-center space-x-3 p-4 bg-[--background-tertiary] rounded-xl">
                     <Bath className="w-6 h-6 text-[--primary]" />
                     <div>
-                      <div className="font-bold text-gray-900">{property.features.bathrooms}</div>
-                      <div className="text-sm text-gray-600">Bathrooms</div>
+                      <div className="font-bold text-white">{property.features.bathrooms}</div>
+                      <div className="text-sm text-gray-400">Bathrooms</div>
                     </div>
                   </div>
                 )}
-                <div className="flex items-center space-x-3 p-4 bg-gray-50 rounded-xl">
+                <div className="flex items-center space-x-3 p-4 bg-[--background-tertiary] rounded-xl">
                   <Maximize className="w-6 h-6 text-[--primary]" />
                   <div>
-                    <div className="font-bold text-gray-900">{property.features.sqft.toLocaleString()}</div>
-                    <div className="text-sm text-gray-600">Sq Ft</div>
+                    <div className="font-bold text-white">{property.features.sqft.toLocaleString()}</div>
+                    <div className="text-sm text-gray-400">Sq Ft</div>
                   </div>
                 </div>
                 {property.features.yearBuilt && (
-                  <div className="flex items-center space-x-3 p-4 bg-gray-50 rounded-xl">
+                  <div className="flex items-center space-x-3 p-4 bg-[--background-tertiary] rounded-xl">
                     <Calendar className="w-6 h-6 text-[--primary]" />
                     <div>
-                      <div className="font-bold text-gray-900">{property.features.yearBuilt}</div>
-                      <div className="text-sm text-gray-600">Year Built</div>
+                      <div className="font-bold text-white">{property.features.yearBuilt}</div>
+                      <div className="text-sm text-gray-400">Year Built</div>
+                    </div>
+                  </div>
+                )}
+                {property.features.units && (
+                  <div className="flex items-center space-x-3 p-4 bg-[--background-tertiary] rounded-xl">
+                    <Home className="w-6 h-6 text-[--primary]" />
+                    <div>
+                      <div className="font-bold text-white">{property.features.units}</div>
+                      <div className="text-sm text-gray-400">Units</div>
                     </div>
                   </div>
                 )}
@@ -217,22 +226,24 @@ export default function PropertyDetailPage() {
             </div>
 
             {/* Description */}
-            <div className="bg-white rounded-2xl shadow-lg p-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Description</h2>
-              <p className="text-gray-700 leading-relaxed whitespace-pre-line">
-                {property.description}
-              </p>
-            </div>
+            {property.description && (
+              <div className="bg-[--background-secondary] border border-[--border] rounded-2xl shadow-xl p-6">
+                <h2 className="text-2xl font-bold text-white mb-4">About This Property</h2>
+                <p className="text-gray-400 leading-relaxed">{property.description}</p>
+              </div>
+            )}
 
             {/* Highlights */}
             {property.highlights && property.highlights.length > 0 && (
-              <div className="bg-white rounded-2xl shadow-lg p-6">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">Highlights</h2>
+              <div className="bg-[--background-secondary] border border-[--border] rounded-2xl shadow-xl p-6">
+                <h2 className="text-2xl font-bold text-white mb-4">Property Highlights</h2>
                 <div className="grid md:grid-cols-2 gap-3">
                   {property.highlights.map((highlight: string, idx: number) => (
-                    <div key={idx} className="flex items-center space-x-2 text-gray-700">
-                      <Check className="w-5 h-5 text-green-500 flex-shrink-0" />
-                      <span>{highlight}</span>
+                    <div key={idx} className="flex items-start space-x-3">
+                      <div className="w-6 h-6 bg-green-500/20 border border-green-500/30 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Check className="w-4 h-4 text-green-400" />
+                      </div>
+                      <span className="text-gray-400">{highlight}</span>
                     </div>
                   ))}
                 </div>
@@ -241,111 +252,89 @@ export default function PropertyDetailPage() {
 
             {/* Tenant Status */}
             {property.tenantOccupied && (
-              <div className="bg-green-50 border-2 border-green-200 rounded-2xl p-6">
+              <div className="bg-green-500/10 border border-green-500/30 rounded-2xl p-6">
                 <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
-                    <Check className="w-6 h-6 text-white" />
+                  <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center">
+                    <Check className="w-6 h-6 text-green-400" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900 text-lg">Tenant Occupied</h3>
-                    <p className="text-gray-600">This property has existing tenants with active lease</p>
+                    <h3 className="text-xl font-bold text-white">Tenant Occupied</h3>
+                    <p className="text-gray-400">This property has active tenants with positive cash flow</p>
                   </div>
                 </div>
               </div>
             )}
           </div>
 
-          {/* Right Column - Pricing & Contact */}
-          <div className="lg:col-span-1">
-            <div className="sticky top-24 space-y-6">
-              {/* Price Card */}
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                className="bg-white rounded-2xl shadow-xl p-6 space-y-6"
-              >
+          {/* Right Column - Price & Contact */}
+          <div className="lg:col-span-1 space-y-6">
+            {/* Price Card */}
+            <div className="bg-[--background-secondary] border border-[--border] rounded-2xl shadow-xl p-6 sticky top-24">
+              <div className="space-y-6">
+                {/* Price */}
                 <div>
-                  <div className="text-sm text-gray-600 mb-2">Price</div>
-                  <div className="text-4xl font-bold text-gray-900">
+                  <div className="flex items-center space-x-2 text-gray-500 text-sm mb-2">
+                    <DollarSign className="w-4 h-4" />
+                    <span>Asking Price</span>
+                  </div>
+                  <div className="text-4xl font-bold text-white">
                     {formatPrice(property.price)}
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 py-4 border-y">
-                  <div>
-                    <div className="flex items-center text-gray-600 text-sm mb-1">
-                      <TrendingUp className="w-4 h-4 mr-1" />
-                      <span>ROI</span>
+                <div className="border-t border-[--border-light] pt-6 space-y-4">
+                  {/* ROI */}
+                  <div className="flex items-center justify-between p-4 bg-purple-500/10 border border-purple-500/30 rounded-xl">
+                    <div className="flex items-center space-x-2">
+                      <TrendingUp className="w-5 h-5 text-purple-400" />
+                      <span className="text-gray-400">ROI</span>
                     </div>
-                    <div className="text-2xl font-bold text-green-600">
-                      {property.roi}%
-                    </div>
+                    <span className="text-2xl font-bold text-purple-400">{property.roi}%</span>
                   </div>
-                  <div>
-                    <div className="flex items-center text-gray-600 text-sm mb-1">
-                      <DollarSign className="w-4 h-4 mr-1" />
-                      <span>Cash Flow</span>
+
+                  {/* Cash Flow */}
+                  <div className="flex items-center justify-between p-4 bg-green-500/10 border border-green-500/30 rounded-xl">
+                    <div className="flex items-center space-x-2">
+                      <DollarSign className="w-5 h-5 text-green-400" />
+                      <span className="text-gray-400">Monthly Cash Flow</span>
                     </div>
-                    <div className="text-2xl font-bold text-green-600">
-                      {formatPrice(property.cashFlow)}
-                      <span className="text-sm text-gray-600">/mo</span>
-                    </div>
+                    <span className="text-2xl font-bold text-green-400">{formatPrice(property.cashFlow)}</span>
                   </div>
                 </div>
 
+                {/* Contact Button */}
                 <button
                   onClick={() => setIsContactModalOpen(true)}
-                  className="w-full py-4 bg-blue-600 text-white rounded-xl font-bold text-lg hover:bg-blue-700 hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+                  className="w-full py-4 bg-gradient-to-r from-emerald-600 to-green-600 text-white font-bold rounded-xl hover:from-emerald-700 hover:to-green-700 hover:shadow-xl transform hover:scale-[1.02] transition-all duration-200"
                 >
-                  Contact Agent
+                  Contact Seller
                 </button>
 
-                <div className="grid grid-cols-2 gap-3">
-                  <button className="flex items-center justify-center space-x-2 py-3 border-2 border-gray-300 rounded-xl hover:border-[--primary] hover:bg-blue-50 transition-all">
-                    <Heart className="w-5 h-5" />
-                    <span className="font-medium">Save</span>
-                  </button>
-                  <button className="flex items-center justify-center space-x-2 py-3 border-2 border-gray-300 rounded-xl hover:border-[--primary] hover:bg-blue-50 transition-all">
-                    <Share2 className="w-5 h-5" />
-                    <span className="font-medium">Share</span>
-                  </button>
-                </div>
-              </motion.div>
-
-              {/* Agent Card */}
-              <div className="bg-white rounded-2xl shadow-xl p-6">
-                <div className="flex items-center space-x-4 mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-[--primary] to-[--accent] rounded-full flex items-center justify-center">
-                    <Building2 className="w-8 h-8 text-white" />
+                {/* Contact Info */}
+                <div className="border-t border-[--border-light] pt-6">
+                  <h3 className="text-sm font-semibold text-white mb-4">Listed By</h3>
+                  <div className="space-y-3">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-10 h-10 bg-gradient-to-br from-[--primary] to-[--accent] rounded-full flex items-center justify-center">
+                        <User className="w-5 h-5 text-white" />
+                      </div>
+                      <div>
+                        <div className="font-semibold text-white">{property.contact.name}</div>
+                        <div className="text-sm text-gray-500">Property Agent</div>
+                      </div>
+                    </div>
+                    <div className="space-y-2 text-sm">
+                      <a href={`tel:${property.contact.phone}`} className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors">
+                        <Phone className="w-4 h-4" />
+                        <span>{property.contact.phone}</span>
+                      </a>
+                      <a href={`mailto:${property.contact.email}`} className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors">
+                        <Mail className="w-4 h-4" />
+                        <span>{property.contact.email}</span>
+                      </a>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-bold text-gray-900 text-lg">{property.contact.name}</h3>
-                    <p className="text-sm text-gray-600">Licensed Real Estate Agent</p>
-                  </div>
                 </div>
-
-                <div className="space-y-3">
-                  <a
-                    href={`tel:${property.contact.phone}`}
-                    className="flex items-center space-x-3 p-3 hover:bg-gray-50 rounded-xl transition-colors"
-                  >
-                    <Phone className="w-5 h-5 text-[--primary]" />
-                    <span className="text-gray-700">{property.contact.phone}</span>
-                  </a>
-                  <a
-                    href={`mailto:${property.contact.email}`}
-                    className="flex items-center space-x-3 p-3 hover:bg-gray-50 rounded-xl transition-colors"
-                  >
-                    <Mail className="w-5 h-5 text-[--primary]" />
-                    <span className="text-gray-700 text-sm">{property.contact.email}</span>
-                  </a>
-                </div>
-              </div>
-
-              {/* Property ID */}
-              <div className="bg-gray-100 rounded-xl p-4 text-center">
-                <div className="text-xs text-gray-500 mb-1">Property ID</div>
-                <div className="text-sm font-mono text-gray-700">#{property.id}</div>
               </div>
             </div>
           </div>

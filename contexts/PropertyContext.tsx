@@ -50,8 +50,8 @@ export function PropertyProvider({ children }: { children: ReactNode }) {
       prev.map((prop) => {
         if (prop.id === propertyId) {
           const updates: Partial<Property> = { status };
-          // Set closedAt timestamp when property becomes Sold or Pending
-          if ((status === 'Sold' || status === 'Pending') && !prop.closedAt) {
+          // Set closedAt timestamp when property becomes Sold
+          if (status === 'Sold' && !prop.closedAt) {
             updates.closedAt = new Date().toISOString();
           }
           return { ...prop, ...updates };
@@ -67,7 +67,7 @@ export function PropertyProvider({ children }: { children: ReactNode }) {
 
   const getClosedProperties = () => {
     return properties
-      .filter((prop) => prop.status === 'Sold' || prop.status === 'Pending')
+      .filter((prop) => prop.status === 'Sold')
       .sort((a, b) => {
         const dateA = a.closedAt ? new Date(a.closedAt).getTime() : new Date(a.createdAt).getTime();
         const dateB = b.closedAt ? new Date(b.closedAt).getTime() : new Date(b.createdAt).getTime();

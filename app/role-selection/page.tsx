@@ -60,10 +60,10 @@ export default function RoleSelectionPage() {
 
   if (status === 'loading') {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-[--background]">
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-[--primary] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading...</p>
+          <p className="text-gray-400">Loading...</p>
         </div>
       </div>
     );
@@ -72,10 +72,10 @@ export default function RoleSelectionPage() {
   // Show loading while checking conditions
   if (status === 'unauthenticated' || (session?.user?.role && session.user.role !== 'buyer')) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-[--background]">
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-[--primary] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-gray-600">Redirecting...</p>
+          <p className="text-gray-400">Redirecting...</p>
         </div>
       </div>
     );
@@ -96,11 +96,19 @@ export default function RoleSelectionPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[--background] via-blue-950/50 to-purple-950/50 p-4 pb-0 relative overflow-hidden">
+      {/* Animated Background Pattern */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSg1OSwxMzAsMjQ2LDAuMSkiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')] opacity-40" />
+        {/* Gradient Orbs */}
+        <div className="absolute top-1/4 -left-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+      </div>
+      
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="max-w-4xl w-full"
+        className="max-w-4xl w-full relative z-10"
       >
         {/* Welcome Header */}
         <div className="text-center mb-12">
@@ -117,7 +125,7 @@ export default function RoleSelectionPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="text-4xl md:text-5xl font-bold text-gray-900 mb-4"
+            className="text-4xl md:text-5xl font-bold text-white mb-4"
           >
             Welcome, {session?.user?.name?.split(' ')[0]}! 👋
           </motion.h1>
@@ -126,7 +134,7 @@ export default function RoleSelectionPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
-            className="text-xl text-gray-600"
+            className="text-xl text-gray-400"
           >
             How would you like to use PropertyHub?
           </motion.p>
@@ -143,7 +151,7 @@ export default function RoleSelectionPage() {
             whileTap={{ scale: 0.98 }}
             onClick={() => handleRoleSelection('buyer')}
             disabled={isSubmitting}
-            className="group relative bg-white rounded-3xl shadow-xl p-8 text-left transition-all hover:shadow-2xl overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed"
+            className="group relative bg-[--background-secondary] border border-[--border] rounded-3xl shadow-xl p-8 text-left transition-all hover:shadow-2xl overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {/* Background Gradient */}
             <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -154,28 +162,28 @@ export default function RoleSelectionPage() {
                 <Search className="w-8 h-8 text-white" />
               </div>
               
-              <h2 className="text-2xl font-bold text-gray-900 mb-3">
+              <h2 className="text-2xl font-bold text-white mb-3">
                 I'm a Buyer/Investor
               </h2>
               
-              <p className="text-gray-600 mb-6">
-                Browse and invest in high-ROI properties in Detroit. Find turnkey real estate opportunities.
+              <p className="text-gray-400 mb-6">
+                Browse and invest in real estate properties. Find investment opportunities.
               </p>
               
               <div className="space-y-2 mb-6">
-                <div className="flex items-center text-sm text-gray-700">
+                <div className="flex items-center text-sm text-gray-300">
                   <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2"></div>
                   <span>Search and filter properties</span>
                 </div>
-                <div className="flex items-center text-sm text-gray-700">
+                <div className="flex items-center text-sm text-gray-300">
                   <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2"></div>
                   <span>Schedule property visits</span>
                 </div>
-                <div className="flex items-center text-sm text-gray-700">
+                <div className="flex items-center text-sm text-gray-300">
                   <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2"></div>
                   <span>Save favorite listings</span>
                 </div>
-                <div className="flex items-center text-sm text-gray-700">
+                <div className="flex items-center text-sm text-gray-300">
                   <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2"></div>
                   <span>View ROI and cash flow</span>
                 </div>
@@ -197,7 +205,7 @@ export default function RoleSelectionPage() {
             whileTap={isSellerAllowed ? { scale: 0.98 } : {}}
             onClick={() => isSellerAllowed && handleRoleSelection('seller')}
             disabled={isSubmitting || !isSellerAllowed || isCheckingAccess}
-            className={`group relative bg-white rounded-3xl shadow-xl p-8 text-left transition-all overflow-hidden ${
+            className={`group relative bg-[--background-secondary] border border-[--border] rounded-3xl shadow-xl p-8 text-left transition-all overflow-hidden ${
               isSellerAllowed
                 ? 'hover:shadow-2xl cursor-pointer'
                 : 'opacity-60 cursor-not-allowed'
@@ -211,8 +219,8 @@ export default function RoleSelectionPage() {
             {/* Access Restricted Badge */}
             {!isSellerAllowed && !isCheckingAccess && (
               <div className="absolute top-4 right-4 z-20 px-3 py-1 bg-gray-200 rounded-full flex items-center space-x-1">
-                <Lock className="w-3 h-3 text-gray-600" />
-                <span className="text-xs font-medium text-gray-600">Restricted</span>
+                <Lock className="w-3 h-3 text-gray-400" />
+                <span className="text-xs font-medium text-gray-400">Restricted</span>
               </div>
             )}
             
@@ -222,30 +230,30 @@ export default function RoleSelectionPage() {
                 <Building2 className="w-8 h-8 text-white" />
               </div>
               
-              <h2 className="text-2xl font-bold text-gray-900 mb-3">
+              <h2 className="text-2xl font-bold text-white mb-3">
                 I'm a Seller/Agent
               </h2>
               
-              <p className="text-gray-600 mb-6">
+              <p className="text-gray-400 mb-6">
                 {isSellerAllowed || isCheckingAccess
-                  ? 'List and manage properties. Connect with serious investors looking for opportunities in Detroit.'
+                  ? 'List and manage properties. Connect with serious investors looking for opportunities.'
                   : 'Seller access is restricted. Contact support to request access.'}
               </p>
               
               <div className="space-y-2 mb-6">
-                <div className="flex items-center text-sm text-gray-700">
+                <div className="flex items-center text-sm text-gray-300">
                   <div className="w-1.5 h-1.5 bg-purple-500 rounded-full mr-2"></div>
                   <span>Add property listings</span>
                 </div>
-                <div className="flex items-center text-sm text-gray-700">
+                <div className="flex items-center text-sm text-gray-300">
                   <div className="w-1.5 h-1.5 bg-purple-500 rounded-full mr-2"></div>
                   <span>Upload property images</span>
                 </div>
-                <div className="flex items-center text-sm text-gray-700">
+                <div className="flex items-center text-sm text-gray-300">
                   <div className="w-1.5 h-1.5 bg-purple-500 rounded-full mr-2"></div>
                   <span>Manage listing status</span>
                 </div>
-                <div className="flex items-center text-sm text-gray-700">
+                <div className="flex items-center text-sm text-gray-300">
                   <div className="w-1.5 h-1.5 bg-purple-500 rounded-full mr-2"></div>
                   <span>Receive inquiries</span>
                 </div>
@@ -268,7 +276,7 @@ export default function RoleSelectionPage() {
               whileTap={{ scale: 0.98 }}
               onClick={() => handleRoleSelection('admin')}
               disabled={isSubmitting}
-              className="group relative bg-white rounded-3xl shadow-xl p-8 text-left transition-all hover:shadow-2xl overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed"
+              className="group relative bg-[--background-secondary] border border-[--border] rounded-3xl shadow-xl p-8 text-left transition-all hover:shadow-2xl overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {/* Background Gradient */}
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -279,28 +287,28 @@ export default function RoleSelectionPage() {
                   <Shield className="w-8 h-8 text-white" />
                 </div>
                 
-                <h2 className="text-2xl font-bold text-gray-900 mb-3">
+                <h2 className="text-2xl font-bold text-white mb-3">
                   I'm an Admin
                 </h2>
                 
-                <p className="text-gray-600 mb-6">
+                <p className="text-gray-400 mb-6">
                   Manage all listings, users, and system settings. Full control over the platform.
                 </p>
                 
                 <div className="space-y-2 mb-6">
-                  <div className="flex items-center text-sm text-gray-700">
+                  <div className="flex items-center text-sm text-gray-300">
                     <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-2"></div>
                     <span>Add/remove all listings</span>
                   </div>
-                  <div className="flex items-center text-sm text-gray-700">
+                  <div className="flex items-center text-sm text-gray-300">
                     <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-2"></div>
                     <span>Manage property status</span>
                   </div>
-                  <div className="flex items-center text-sm text-gray-700">
+                  <div className="flex items-center text-sm text-gray-300">
                     <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-2"></div>
                     <span>View analytics</span>
                   </div>
-                  <div className="flex items-center text-sm text-gray-700">
+                  <div className="flex items-center text-sm text-gray-300">
                     <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-2"></div>
                     <span>System administration</span>
                   </div>
