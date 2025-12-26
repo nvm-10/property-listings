@@ -43,11 +43,11 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2 group">
-            <div className="w-10 h-10 bg-gradient-to-br from-[--primary] to-[--accent] rounded-lg flex items-center justify-center transform transition-transform group-hover:scale-110">
-              <Building2 className="w-6 h-6 text-white" />
+            <div className="w-10 h-10 bg-[--primary] rounded-lg flex items-center justify-center transform transition-transform group-hover:scale-105">
+              <Building2 className="w-6 h-6 text-[--background]" />
             </div>
-            <span className="text-2xl font-bold gradient-text hidden sm:block">
-              PropertyHub
+            <span className="text-2xl font-bold text-white hidden sm:block">
+              Property<span className="text-[--primary]">Hub</span>
             </span>
           </Link>
 
@@ -91,8 +91,8 @@ export default function Navbar() {
                       className="rounded-full"
                     />
                   ) : (
-                    <div className="w-9 h-9 bg-gradient-to-br from-[--primary] to-[--accent] rounded-full flex items-center justify-center">
-                      <User className="w-5 h-5 text-white" />
+                    <div className="w-9 h-9 bg-[--primary] rounded-full flex items-center justify-center">
+                      <User className="w-5 h-5 text-[--background]" />
                     </div>
                   )}
                 </button>
@@ -105,10 +105,10 @@ export default function Navbar() {
                       exit={{ opacity: 0, y: 10 }}
                       className="absolute right-0 mt-2 w-64 bg-[--background-secondary] border border-[--border-light] rounded-2xl shadow-2xl overflow-hidden"
                     >
-                      <div className="p-4 bg-gradient-to-br from-blue-600/20 to-purple-600/20 border-b border-[--border-light]">
+                      <div className="p-4 bg-[--background-tertiary] border-b border-[--border-light]">
                         <p className="font-bold text-white">{session.user.name}</p>
                         <p className="text-sm text-gray-400">{session.user.email}</p>
-                        <span className="inline-block mt-2 px-3 py-1 bg-[--primary]/20 border border-[--primary]/30 rounded-full text-xs font-medium text-[--primary-light] capitalize">
+                        <span className="inline-block mt-2 px-3 py-1 bg-[--primary]/10 border border-[--primary]/30 rounded-full text-xs font-medium text-[--primary] capitalize">
                           {session.user.role}
                         </span>
                       </div>
@@ -136,7 +136,7 @@ export default function Navbar() {
             ) : (
               <button
                 onClick={() => setIsAuthModalOpen(true)}
-                className="px-6 py-2.5 bg-gradient-to-r from-[--primary] to-[--accent] text-white rounded-full font-medium text-sm hover:shadow-lg hover:scale-105 transition-all duration-300"
+                className="px-6 py-2.5 bg-[--primary] text-[--background] rounded-lg font-semibold text-sm hover:bg-[--primary-light] transition-all duration-200"
               >
                 Sign In
               </button>
@@ -181,7 +181,7 @@ export default function Navbar() {
               {status === 'authenticated' && session?.user ? (
                 <button
                   onClick={() => signOut({ callbackUrl: '/' })}
-                  className="block w-full px-6 py-3 bg-red-500 text-white rounded-full font-medium text-center hover:shadow-lg transition-all"
+                  className="block w-full px-6 py-3 bg-red-500/90 text-white rounded-lg font-medium text-center hover:bg-red-600 transition-all"
                 >
                   Sign Out
                 </button>
@@ -191,7 +191,7 @@ export default function Navbar() {
                     setIsMobileMenuOpen(false);
                     setIsAuthModalOpen(true);
                   }}
-                  className="block w-full px-6 py-3 bg-gradient-to-r from-[--primary] to-[--accent] text-white rounded-full font-medium text-center hover:shadow-lg transition-all"
+                  className="block w-full px-6 py-3 bg-[--primary] text-[--background] rounded-lg font-semibold text-center hover:bg-[--primary-light] transition-all"
                 >
                   Sign In
                 </button>

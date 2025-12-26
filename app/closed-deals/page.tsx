@@ -35,8 +35,8 @@ export default function ClosedDealsPage() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
         >
-          <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-            Closed Deals
+          <h1 className="text-5xl font-bold mb-4 text-white">
+            Closed <span className="text-[--primary]">Deals</span>
           </h1>
           <p className="text-xl text-gray-300 mb-2">
             Recently sold and pending properties
@@ -53,8 +53,8 @@ export default function ClosedDealsPage() {
             animate={{ opacity: 1 }}
             className="text-center py-20"
           >
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-blue-500/20 border border-blue-500/30 mb-6">
-              <Building2 className="w-10 h-10 text-blue-400" />
+            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-[--primary]/10 border border-[--primary]/20 mb-6">
+              <Building2 className="w-10 h-10 text-[--primary]" />
             </div>
             <h3 className="text-2xl font-semibold text-white mb-2">No Closed Deals Yet</h3>
             <p className="text-gray-400 mb-8">Check back soon to see completed transactions</p>
@@ -132,8 +132,8 @@ export default function ClosedDealsPage() {
 
                       {/* Key Stats Grid */}
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                        <div className="bg-blue-500/20 border border-blue-500/30 rounded-lg p-4">
-                          <div className="flex items-center gap-2 text-blue-400 mb-1">
+                        <div className="bg-[--primary]/10 border border-[--primary]/20 rounded-lg p-4">
+                          <div className="flex items-center gap-2 text-[--primary] mb-1">
                             <DollarSign className="w-4 h-4" />
                             <span className="text-xs font-medium">Price</span>
                           </div>
@@ -142,8 +142,8 @@ export default function ClosedDealsPage() {
                           </p>
                         </div>
 
-                        <div className="bg-purple-500/20 border border-purple-500/30 rounded-lg p-4">
-                          <div className="flex items-center gap-2 text-purple-400 mb-1">
+                        <div className="bg-[--primary]/10 border border-[--primary]/20 rounded-lg p-4">
+                          <div className="flex items-center gap-2 text-[--primary] mb-1">
                             <TrendingUp className="w-4 h-4" />
                             <span className="text-xs font-medium">ROI</span>
                           </div>
@@ -152,8 +152,8 @@ export default function ClosedDealsPage() {
                           </p>
                         </div>
 
-                        <div className="bg-green-500/20 border border-green-500/30 rounded-lg p-4">
-                          <div className="flex items-center gap-2 text-green-400 mb-1">
+                        <div className="bg-[--success]/10 border border-[--success]/20 rounded-lg p-4">
+                          <div className="flex items-center gap-2 text-[--success] mb-1">
                             <DollarSign className="w-4 h-4" />
                             <span className="text-xs font-medium">Cash Flow</span>
                           </div>
@@ -162,8 +162,8 @@ export default function ClosedDealsPage() {
                           </p>
                         </div>
 
-                        <div className="bg-orange-500/20 border border-orange-500/30 rounded-lg p-4">
-                          <div className="flex items-center gap-2 text-orange-400 mb-1">
+                        <div className="bg-[--background-tertiary] border border-[--border-light] rounded-lg p-4">
+                          <div className="flex items-center gap-2 text-gray-400 mb-1">
                             <Building2 className="w-4 h-4" />
                             <span className="text-xs font-medium">Type</span>
                           </div>
@@ -197,7 +197,7 @@ export default function ClosedDealsPage() {
                     <div className="border-t border-[--border-light] pt-4">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-4">
-                          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center text-white font-bold">
+                          <div className="w-12 h-12 rounded-full bg-[--primary] flex items-center justify-center text-[--background] font-bold">
                             {property.contact.name.charAt(0)}
                           </div>
                           <div>
@@ -210,14 +210,14 @@ export default function ClosedDealsPage() {
                             href={`https://wa.me/${property.contact.phone.replace(/\D/g, '')}?text=${encodeURIComponent(`Hi, I'm inquiring about: ${property.title}`)}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-all text-sm font-medium"
+                            className="inline-flex items-center gap-2 px-4 py-2 bg-[--primary] hover:bg-[--primary-light] text-[--background] rounded-lg transition-all text-sm font-medium"
                           >
                             <MessageCircle className="w-4 h-4" />
                             WhatsApp
                           </a>
                           <a
                             href={`mailto:${property.contact.email}`}
-                            className="inline-flex items-center gap-2 px-4 py-2 bg-[--background-tertiary] border-2 border-blue-500/30 text-blue-400 rounded-lg hover:bg-[--background] transition-all text-sm font-medium"
+                            className="inline-flex items-center gap-2 px-4 py-2 bg-[--background-tertiary] border border-[--border-light] text-gray-300 rounded-lg hover:border-[--primary] hover:text-[--primary] transition-all text-sm font-medium"
                           >
                             <Mail className="w-4 h-4" />
                             Email

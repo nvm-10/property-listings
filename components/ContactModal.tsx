@@ -120,54 +120,19 @@ export default function ContactModal({
               onClick={(e) => e.stopPropagation()}
               className="bg-[#1a1f2e] rounded-3xl shadow-2xl max-w-2xl w-full overflow-hidden border border-gray-700 my-auto max-h-[90vh] overflow-y-auto"
             >
-              {/* Animated Header */}
+              {/* Header */}
               <div className="relative overflow-hidden">
-                {/* Animated gradient background */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-emerald-600 via-green-500 to-teal-600"
-                  animate={{
-                    backgroundPosition: ['0% 0%', '100% 100%', '0% 0%'],
-                  }}
-                  transition={{
-                    duration: 10,
-                    repeat: Infinity,
-                    ease: 'linear',
-                  }}
-                  style={{ backgroundSize: '200% 200%' }}
-                />
-                
-                {/* Floating particles */}
-                <div className="absolute inset-0 overflow-hidden">
-                  {[...Array(6)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      className="absolute w-2 h-2 bg-white/20 rounded-full"
-                      style={{
-                        left: `${15 + i * 15}%`,
-                        top: `${20 + (i % 3) * 25}%`,
-                      }}
-                      animate={{
-                        y: [0, -20, 0],
-                        opacity: [0.2, 0.6, 0.2],
-                        scale: [1, 1.2, 1],
-                      }}
-                      transition={{
-                        duration: 3 + i * 0.5,
-                        repeat: Infinity,
-                        delay: i * 0.3,
-                      }}
-                    />
-                  ))}
-                </div>
+                {/* Professional solid background */}
+                <div className="absolute inset-0 bg-[--primary]" />
 
-                <div className="relative p-6 text-white">
+                <div className="relative p-6 text-[--background]">
                   {/* Close button */}
                   <motion.button
                     onClick={onClose}
-                    whileHover={{ scale: 1.1, rotate: 90 }}
+                    whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     transition={{ type: 'spring', stiffness: 400, damping: 17 }}
-                    className="absolute top-4 right-4 p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors backdrop-blur-sm"
+                    className="absolute top-4 right-4 p-2 bg-[--background]/10 hover:bg-[--background]/20 rounded-full transition-colors"
                   >
                     <X className="w-5 h-5" />
                   </motion.button>
@@ -178,32 +143,14 @@ export default function ContactModal({
                     animate="visible"
                     className="flex flex-col items-center"
                   >
-                    {/* Animated Icon */}
+                    {/* Icon */}
                     <motion.div
                       variants={itemVariants}
                       className="relative mb-3"
                     >
-                      <motion.div
-                        className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center"
-                        whileHover={{ scale: 1.05 }}
-                        animate={{
-                          boxShadow: [
-                            '0 0 20px rgba(255,255,255,0.2)',
-                            '0 0 40px rgba(255,255,255,0.3)',
-                            '0 0 20px rgba(255,255,255,0.2)',
-                          ],
-                        }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                      >
+                      <div className="w-16 h-16 bg-[--background]/20 rounded-2xl flex items-center justify-center">
                         <MessageCircle className="w-8 h-8" />
-                      </motion.div>
-                      <motion.div
-                        className="absolute -top-1 -right-1"
-                        animate={{ rotate: [0, 15, -15, 0] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                      >
-                        <Sparkles className="w-5 h-5 text-yellow-300" />
-                      </motion.div>
+                      </div>
                     </motion.div>
 
                     <motion.h2
@@ -214,7 +161,7 @@ export default function ContactModal({
                     </motion.h2>
                     <motion.p
                       variants={itemVariants}
-                      className="text-center text-green-100/90 text-sm line-clamp-1 max-w-xs"
+                      className="text-center text-[--background]/70 text-sm line-clamp-1 max-w-xs"
                     >
                       {propertyTitle}
                     </motion.p>
@@ -233,10 +180,10 @@ export default function ContactModal({
                     {/* Agent Info */}
                     <motion.div 
                       variants={itemVariants}
-                      className="flex items-center space-x-4 p-4 bg-[#252b3b] rounded-xl border border-gray-700"
+                      className="flex items-center space-x-4 p-4 bg-[--background-tertiary] rounded-xl border border-[--border-light]"
                     >
-                      <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-green-600 rounded-full flex items-center justify-center">
-                        <User className="w-6 h-6 text-white" />
+                      <div className="w-12 h-12 bg-[--primary] rounded-full flex items-center justify-center">
+                        <User className="w-6 h-6 text-[--background]" />
                       </div>
                       <div>
                         <h3 className="font-bold text-white">
@@ -255,10 +202,10 @@ export default function ContactModal({
                         onClick={handleWhatsApp}
                         whileHover={{ scale: 1.02, y: -2 }}
                         whileTap={{ scale: 0.98 }}
-                        className="flex items-center justify-center space-x-2 p-4 bg-green-500/10 border border-green-500/30 hover:border-green-500/50 hover:bg-green-500/20 rounded-xl transition-all group"
+                        className="flex items-center justify-center space-x-2 p-4 bg-[--primary]/10 border border-[--primary]/30 hover:border-[--primary]/50 hover:bg-[--primary]/20 rounded-xl transition-all group"
                       >
-                        <MessageCircle className="w-5 h-5 text-green-400 group-hover:scale-110 transition-transform" />
-                        <span className="font-medium text-green-400">
+                        <MessageCircle className="w-5 h-5 text-[--primary] group-hover:scale-110 transition-transform" />
+                        <span className="font-medium text-[--primary]">
                           WhatsApp
                         </span>
                       </motion.button>
@@ -267,10 +214,10 @@ export default function ContactModal({
                         onClick={handleDirectEmail}
                         whileHover={{ scale: 1.02, y: -2 }}
                         whileTap={{ scale: 0.98 }}
-                        className="flex items-center justify-center space-x-2 p-4 bg-purple-500/10 border border-purple-500/30 hover:border-purple-500/50 hover:bg-purple-500/20 rounded-xl transition-all group"
+                        className="flex items-center justify-center space-x-2 p-4 bg-[--background-tertiary] border border-[--border-light] hover:border-[--primary]/50 hover:bg-[--background-tertiary]/80 rounded-xl transition-all group"
                       >
-                        <Mail className="w-5 h-5 text-purple-400 group-hover:scale-110 transition-transform" />
-                        <span className="font-medium text-purple-400">
+                        <Mail className="w-5 h-5 text-gray-400 group-hover:text-[--primary] group-hover:scale-110 transition-all" />
+                        <span className="font-medium text-gray-400 group-hover:text-[--primary]">
                           Send Email
                         </span>
                       </motion.button>
@@ -282,7 +229,7 @@ export default function ContactModal({
                         <div className="w-full border-t border-gray-700" />
                       </div>
                       <div className="relative flex justify-center">
-                        <span className="px-4 text-sm text-gray-400 bg-[#1a1f2e]">
+                        <span className="px-4 text-sm text-gray-400 bg-[--background-secondary]">
                           Or send a message
                         </span>
                       </div>
@@ -300,7 +247,7 @@ export default function ContactModal({
                           onChange={(e) =>
                             setFormData({ ...formData, name: e.target.value })
                           }
-                          className="w-full px-4 py-3 bg-[#252b3b] border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 transition-all"
+                          className="w-full px-4 py-3 bg-[--background-tertiary] border border-[--border-light] rounded-xl text-white placeholder-gray-500 focus:ring-2 focus:ring-[--primary]/50 focus:border-[--primary] transition-all"
                           placeholder="John Doe"
                         />
                       </div>
@@ -315,7 +262,7 @@ export default function ContactModal({
                           onChange={(e) =>
                             setFormData({ ...formData, email: e.target.value })
                           }
-                          className="w-full px-4 py-3 bg-[#252b3b] border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 transition-all"
+                          className="w-full px-4 py-3 bg-[--background-tertiary] border border-[--border-light] rounded-xl text-white placeholder-gray-500 focus:ring-2 focus:ring-[--primary]/50 focus:border-[--primary] transition-all"
                           placeholder="john@example.com"
                         />
                       </div>
@@ -332,7 +279,7 @@ export default function ContactModal({
                         onChange={(e) =>
                           setFormData({ ...formData, phone: e.target.value })
                         }
-                        className="w-full px-4 py-3 bg-[#252b3b] border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 transition-all"
+                        className="w-full px-4 py-3 bg-[--background-tertiary] border border-[--border-light] rounded-xl text-white placeholder-gray-500 focus:ring-2 focus:ring-[--primary]/50 focus:border-[--primary] transition-all"
                         placeholder="(123) 456-7890"
                       />
                     </motion.div>
@@ -347,7 +294,7 @@ export default function ContactModal({
                           setFormData({ ...formData, message: e.target.value })
                         }
                         rows={3}
-                        className="w-full px-4 py-3 bg-[#252b3b] border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 transition-all resize-none"
+                        className="w-full px-4 py-3 bg-[--background-tertiary] border border-[--border-light] rounded-xl text-white placeholder-gray-500 focus:ring-2 focus:ring-[--primary]/50 focus:border-[--primary] transition-all resize-none"
                         placeholder="Any specific questions or requirements?"
                       />
                     </motion.div>
@@ -357,19 +304,12 @@ export default function ContactModal({
                       type="submit"
                       whileHover={{ scale: 1.02, y: -2 }}
                       whileTap={{ scale: 0.98 }}
-                      className="group w-full relative overflow-hidden rounded-2xl transition-all duration-300"
+                      className="group w-full bg-[--primary] hover:bg-[--primary-light] rounded-xl transition-all duration-300"
                     >
-                      <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 via-green-500 to-teal-500 rounded-2xl" />
-                      <div className="relative flex items-center justify-center space-x-2 px-6 py-4">
-                        <Send className="w-5 h-5 text-white" />
-                        <span className="text-white font-semibold">Send Message</span>
+                      <div className="flex items-center justify-center space-x-2 px-6 py-4">
+                        <Send className="w-5 h-5 text-[--background]" />
+                        <span className="text-[--background] font-semibold">Send Message</span>
                       </div>
-                      <motion.div
-                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                        initial={{ x: '-100%' }}
-                        whileHover={{ x: '100%' }}
-                        transition={{ duration: 0.6 }}
-                      />
                     </motion.button>
                   </form>
                 ) : (
@@ -379,19 +319,9 @@ export default function ContactModal({
                     animate={{ opacity: 1, scale: 1 }}
                     className="text-center py-8"
                   >
-                    <motion.div 
-                      className="w-20 h-20 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4"
-                      animate={{
-                        boxShadow: [
-                          '0 0 20px rgba(34, 197, 94, 0.3)',
-                          '0 0 40px rgba(34, 197, 94, 0.5)',
-                          '0 0 20px rgba(34, 197, 94, 0.3)',
-                        ],
-                      }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    >
+                    <div className="w-20 h-20 bg-[--success] rounded-full flex items-center justify-center mx-auto mb-4">
                       <CheckCircle2 className="w-10 h-10 text-white" />
-                    </motion.div>
+                    </div>
                     <h3 className="text-2xl font-bold text-white mb-2">
                       Message Sent!
                     </h3>

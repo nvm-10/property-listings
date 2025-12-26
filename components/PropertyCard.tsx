@@ -47,7 +47,7 @@ export default function PropertyCard({ property, index = 0 }: PropertyCardProps)
     >
       {/* Featured Badge */}
       {property.featured && (
-        <div className="absolute top-4 left-4 z-10 px-3 py-1 bg-gradient-to-r from-[--accent] to-[--primary] text-white text-xs font-bold rounded-full">
+        <div className="absolute top-4 left-4 z-10 px-3 py-1 bg-[--primary] text-[--background] text-xs font-bold rounded-full">
           FEATURED
         </div>
       )}
@@ -92,7 +92,7 @@ export default function PropertyCard({ property, index = 0 }: PropertyCardProps)
         </div>
 
         {/* Property Type */}
-        <div className="inline-block px-3 py-1 bg-blue-500/20 text-blue-300 text-sm font-medium rounded-lg border border-blue-500/30">
+        <div className="inline-block px-3 py-1 bg-[--primary]/10 text-[--primary] text-sm font-medium rounded-lg border border-[--primary]/20">
           {property.type}
         </div>
 
@@ -132,24 +132,24 @@ export default function PropertyCard({ property, index = 0 }: PropertyCardProps)
               <TrendingUp className="w-3 h-3" />
               <span>ROI</span>
             </div>
-            <div className="text-2xl font-bold text-green-400">
+            <div className="text-2xl font-bold text-[--primary]">
               {property.roi}%
             </div>
           </div>
         </div>
 
         {/* Cash Flow */}
-        <div className="flex items-center justify-between p-3 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-lg">
+        <div className="flex items-center justify-between p-3 bg-[--success]/10 border border-[--success]/20 rounded-lg">
           <span className="text-sm font-medium text-gray-300">Monthly Cash Flow</span>
-          <span className="text-lg font-bold text-green-400">
+          <span className="text-lg font-bold text-[--success]">
             {formatPrice(property.cashFlow)}
           </span>
         </div>
 
         {/* Tenant Status */}
         {property.tenantOccupied && (
-          <div className="flex items-center space-x-2 text-sm text-green-400">
-            <div className="w-6 h-6 bg-green-500/20 border border-green-500/30 rounded-full flex items-center justify-center">
+          <div className="flex items-center space-x-2 text-sm text-[--success]">
+            <div className="w-6 h-6 bg-[--success]/10 border border-[--success]/20 rounded-full flex items-center justify-center">
               <Check className="w-4 h-4" />
             </div>
             <span className="font-medium">Tenant Occupied</span>
@@ -210,7 +210,7 @@ export default function PropertyCard({ property, index = 0 }: PropertyCardProps)
                 <div className="space-y-1">
                   {property.highlights.slice(0, 3).map((highlight, idx) => (
                     <div key={idx} className="flex items-start space-x-2 text-sm text-gray-400">
-                      <Check className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
+                      <Check className="w-4 h-4 text-[--primary] mt-0.5 flex-shrink-0" />
                       <span>{highlight}</span>
                     </div>
                   ))}
@@ -240,7 +240,7 @@ export default function PropertyCard({ property, index = 0 }: PropertyCardProps)
           </button>
           <button
             onClick={() => setIsContactModalOpen(true)}
-            className="flex items-center justify-center space-x-2 py-3 bg-gradient-to-r from-emerald-600 to-green-600 text-white font-bold rounded-xl hover:from-emerald-700 hover:to-green-700 hover:shadow-xl transform hover:scale-[1.02] transition-all duration-200"
+            className="flex items-center justify-center space-x-2 py-3 bg-[--primary] text-[--background] font-bold rounded-xl hover:bg-[--primary-light] transition-all duration-200"
           >
             <MessageCircle className="w-4 h-4" />
             <span>Contact</span>

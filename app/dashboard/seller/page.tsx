@@ -206,8 +206,8 @@ export default function SellerDashboard() {
           className="mb-8"
         >
           <div className="flex items-center space-x-4 mb-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-[--accent] rounded-xl flex items-center justify-center">
-              <Building2 className="w-6 h-6 text-white" />
+            <div className="w-12 h-12 bg-[--primary] rounded-xl flex items-center justify-center">
+              <Building2 className="w-6 h-6 text-[--background]" />
             </div>
             <div>
               <h1 className="text-3xl font-bold text-white">Seller Dashboard</h1>
@@ -528,7 +528,7 @@ export default function SellerDashboard() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="px-8 py-3 bg-gradient-to-r from-purple-500 to-[--accent] text-white rounded-xl font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+              className="px-8 py-3 bg-[--primary] text-[--background] rounded-xl font-bold hover:bg-[--primary-light] transition-all duration-200 flex items-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? (
                 <>

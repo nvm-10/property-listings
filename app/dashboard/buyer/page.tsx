@@ -41,19 +41,19 @@ export default function BuyerDashboard() {
       label: 'Properties Viewed',
       value: '12',
       icon: Eye,
-      color: 'from-blue-500 to-cyan-500',
+      color: 'bg-[--primary]',
     },
     {
       label: 'Saved Favorites',
       value: '5',
       icon: Heart,
-      color: 'from-pink-500 to-rose-500',
+      color: 'bg-[--primary]',
     },
     {
       label: 'Avg. ROI Interest',
       value: '12.5%',
       icon: TrendingUp,
-      color: 'from-purple-500 to-indigo-500',
+      color: 'bg-[--primary]',
     },
   ];
 
@@ -79,7 +79,7 @@ export default function BuyerDashboard() {
             </div>
             <Link
               href="/properties"
-              className="px-6 py-3 bg-gradient-to-r from-[--primary] to-[--accent] text-white rounded-xl font-medium hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+              className="px-6 py-3 bg-[--primary] text-[--background] rounded-xl font-medium hover:bg-[--primary-light] transition-all duration-200"
             >
               Browse Properties
             </Link>
@@ -99,8 +99,8 @@ export default function BuyerDashboard() {
                 className="bg-[--background-secondary] border border-[--border] rounded-2xl shadow-xl p-6 hover:shadow-2xl transition-all hover:border-[--border-light]"
               >
                 <div className="flex items-center justify-between mb-4">
-                  <div className={`w-12 h-12 bg-gradient-to-br ${stat.color} rounded-xl flex items-center justify-center`}>
-                    <Icon className="w-6 h-6 text-white" />
+                <div className={`w-12 h-12 ${stat.color} rounded-xl flex items-center justify-center`}>
+                    <Icon className="w-6 h-6 text-[--background]" />
                   </div>
                 </div>
                 <div className="text-3xl font-bold text-white mb-1">
@@ -136,8 +136,8 @@ export default function BuyerDashboard() {
 
             {/* Empty State */}
             <div className="text-center py-12">
-              <div className="w-20 h-20 bg-pink-500/20 border border-pink-500/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Heart className="w-10 h-10 text-pink-400" />
+              <div className="w-20 h-20 bg-[--primary]/10 border border-[--primary]/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Heart className="w-10 h-10 text-[--primary]" />
               </div>
               <h3 className="text-xl font-bold text-white mb-2">
                 No saved properties yet
@@ -147,7 +147,7 @@ export default function BuyerDashboard() {
               </p>
               <Link
                 href="/properties"
-                className="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-pink-500 to-rose-500 text-white rounded-xl font-medium hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+                className="inline-flex items-center space-x-2 px-6 py-3 bg-[--primary] text-[--background] rounded-xl font-medium hover:bg-[--primary-light] transition-all duration-200"
               >
                 <Search className="w-5 h-5" />
                 <span>Browse Properties</span>
@@ -194,19 +194,19 @@ export default function BuyerDashboard() {
         </div>
 
         {/* Getting Started Tips */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-          className="mt-8 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-2xl p-6"
-        >
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+            className="mt-8 bg-[--primary]/5 border border-[--primary]/20 rounded-2xl p-6"
+          >
           <h3 className="text-xl font-bold text-white mb-4">
             💡 Getting Started Tips
           </h3>
-          <div className="grid md:grid-cols-2 gap-4">
+            <div className="grid md:grid-cols-2 gap-4">
             <div className="flex items-start space-x-3">
-              <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                <span className="text-white font-bold">1</span>
+              <div className="w-8 h-8 bg-[--primary] rounded-lg flex items-center justify-center flex-shrink-0">
+                <span className="text-[--background] font-bold">1</span>
               </div>
               <div>
                 <h4 className="font-bold text-white mb-1">Browse Properties</h4>
@@ -216,8 +216,8 @@ export default function BuyerDashboard() {
               </div>
             </div>
             <div className="flex items-start space-x-3">
-              <div className="w-8 h-8 bg-purple-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                <span className="text-white font-bold">2</span>
+              <div className="w-8 h-8 bg-[--primary] rounded-lg flex items-center justify-center flex-shrink-0">
+                <span className="text-[--background] font-bold">2</span>
               </div>
               <div>
                 <h4 className="font-bold text-white mb-1">Make an Offer</h4>

@@ -96,13 +96,11 @@ export default function RoleSelectionPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[--background] via-blue-950/50 to-purple-950/50 p-4 pb-0 relative overflow-hidden">
-      {/* Animated Background Pattern */}
+    <div className="min-h-screen flex items-center justify-center bg-[--background] p-4 pb-0 relative overflow-hidden">
+      {/* Subtle Background */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSg1OSwxMzAsMjQ2LDAuMSkiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')] opacity-40" />
-        {/* Gradient Orbs */}
-        <div className="absolute top-1/4 -left-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 -left-20 w-96 h-96 bg-[--primary]/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-[--primary]/5 rounded-full blur-3xl" />
       </div>
       
       <motion.div
@@ -116,9 +114,9 @@ export default function RoleSelectionPage() {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.2 }}
-            className="w-20 h-20 bg-gradient-to-br from-[--primary] to-[--accent] rounded-2xl flex items-center justify-center mx-auto mb-6"
+            className="w-20 h-20 bg-[--primary] rounded-2xl flex items-center justify-center mx-auto mb-6"
           >
-            <Building2 className="w-10 h-10 text-white" />
+            <Building2 className="w-10 h-10 text-[--background]" />
           </motion.div>
           
           <motion.h1
@@ -151,15 +149,15 @@ export default function RoleSelectionPage() {
             whileTap={{ scale: 0.98 }}
             onClick={() => handleRoleSelection('buyer')}
             disabled={isSubmitting}
-            className="group relative bg-[--background-secondary] border border-[--border] rounded-3xl shadow-xl p-8 text-left transition-all hover:shadow-2xl overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed"
+            className="group relative bg-[--background-secondary] border border-[--border] rounded-3xl shadow-xl p-8 text-left transition-all hover:shadow-2xl hover:border-[--primary]/30 overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {/* Background Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="absolute inset-0 bg-[--primary]/5 opacity-0 group-hover:opacity-100 transition-opacity" />
             
             {/* Content */}
             <div className="relative z-10">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mb-6 transform group-hover:scale-110 transition-transform">
-                <Search className="w-8 h-8 text-white" />
+              <div className="w-16 h-16 bg-[--primary] rounded-2xl flex items-center justify-center mb-6 transform group-hover:scale-110 transition-transform">
+                <Search className="w-8 h-8 text-[--background]" />
               </div>
               
               <h2 className="text-2xl font-bold text-white mb-3">
@@ -172,24 +170,24 @@ export default function RoleSelectionPage() {
               
               <div className="space-y-2 mb-6">
                 <div className="flex items-center text-sm text-gray-300">
-                  <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2"></div>
+                  <div className="w-1.5 h-1.5 bg-[--primary] rounded-full mr-2"></div>
                   <span>Search and filter properties</span>
                 </div>
                 <div className="flex items-center text-sm text-gray-300">
-                  <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2"></div>
+                  <div className="w-1.5 h-1.5 bg-[--primary] rounded-full mr-2"></div>
                   <span>Schedule property visits</span>
                 </div>
                 <div className="flex items-center text-sm text-gray-300">
-                  <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2"></div>
+                  <div className="w-1.5 h-1.5 bg-[--primary] rounded-full mr-2"></div>
                   <span>Save favorite listings</span>
                 </div>
                 <div className="flex items-center text-sm text-gray-300">
-                  <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2"></div>
+                  <div className="w-1.5 h-1.5 bg-[--primary] rounded-full mr-2"></div>
                   <span>View ROI and cash flow</span>
                 </div>
               </div>
               
-              <div className="flex items-center text-blue-600 font-medium group-hover:translate-x-2 transition-transform">
+              <div className="flex items-center text-[--primary] font-medium group-hover:translate-x-2 transition-transform">
                 <span>Continue as Investor</span>
                 <ArrowRight className="w-5 h-5 ml-2" />
               </div>
@@ -207,12 +205,12 @@ export default function RoleSelectionPage() {
             disabled={isSubmitting || !isSellerAllowed || isCheckingAccess}
             className={`group relative bg-[--background-secondary] border border-[--border] rounded-3xl shadow-xl p-8 text-left transition-all overflow-hidden ${
               isSellerAllowed
-                ? 'hover:shadow-2xl cursor-pointer'
+                ? 'hover:shadow-2xl hover:border-[--primary]/30 cursor-pointer'
                 : 'opacity-60 cursor-not-allowed'
             } ${isSubmitting && 'opacity-50'}`}
           >
             {/* Background Gradient */}
-            <div className={`absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 opacity-0 transition-opacity ${
+            <div className={`absolute inset-0 bg-[--primary]/5 opacity-0 transition-opacity ${
               isSellerAllowed ? 'group-hover:opacity-100' : ''
             }`} />
             
@@ -226,8 +224,8 @@ export default function RoleSelectionPage() {
             
             {/* Content */}
             <div className="relative z-10">
-              <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mb-6 transform group-hover:scale-110 transition-transform">
-                <Building2 className="w-8 h-8 text-white" />
+              <div className="w-16 h-16 bg-[--primary] rounded-2xl flex items-center justify-center mb-6 transform group-hover:scale-110 transition-transform">
+                <Building2 className="w-8 h-8 text-[--background]" />
               </div>
               
               <h2 className="text-2xl font-bold text-white mb-3">
@@ -242,24 +240,24 @@ export default function RoleSelectionPage() {
               
               <div className="space-y-2 mb-6">
                 <div className="flex items-center text-sm text-gray-300">
-                  <div className="w-1.5 h-1.5 bg-purple-500 rounded-full mr-2"></div>
+                  <div className="w-1.5 h-1.5 bg-[--primary] rounded-full mr-2"></div>
                   <span>Add property listings</span>
                 </div>
                 <div className="flex items-center text-sm text-gray-300">
-                  <div className="w-1.5 h-1.5 bg-purple-500 rounded-full mr-2"></div>
+                  <div className="w-1.5 h-1.5 bg-[--primary] rounded-full mr-2"></div>
                   <span>Upload property images</span>
                 </div>
                 <div className="flex items-center text-sm text-gray-300">
-                  <div className="w-1.5 h-1.5 bg-purple-500 rounded-full mr-2"></div>
+                  <div className="w-1.5 h-1.5 bg-[--primary] rounded-full mr-2"></div>
                   <span>Manage listing status</span>
                 </div>
                 <div className="flex items-center text-sm text-gray-300">
-                  <div className="w-1.5 h-1.5 bg-purple-500 rounded-full mr-2"></div>
+                  <div className="w-1.5 h-1.5 bg-[--primary] rounded-full mr-2"></div>
                   <span>Receive inquiries</span>
                 </div>
               </div>
               
-              <div className="flex items-center text-purple-600 font-medium group-hover:translate-x-2 transition-transform">
+              <div className="flex items-center text-[--primary] font-medium group-hover:translate-x-2 transition-transform">
                 <span>Continue as Seller</span>
                 <ArrowRight className="w-5 h-5 ml-2" />
               </div>
@@ -276,15 +274,15 @@ export default function RoleSelectionPage() {
               whileTap={{ scale: 0.98 }}
               onClick={() => handleRoleSelection('admin')}
               disabled={isSubmitting}
-              className="group relative bg-[--background-secondary] border border-[--border] rounded-3xl shadow-xl p-8 text-left transition-all hover:shadow-2xl overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed"
+              className="group relative bg-[--background-secondary] border border-[--border] rounded-3xl shadow-xl p-8 text-left transition-all hover:shadow-2xl hover:border-[--primary]/30 overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {/* Background Gradient */}
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute inset-0 bg-[--primary]/5 opacity-0 group-hover:opacity-100 transition-opacity" />
               
               {/* Content */}
               <div className="relative z-10">
-                <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-2xl flex items-center justify-center mb-6 transform group-hover:scale-110 transition-transform">
-                  <Shield className="w-8 h-8 text-white" />
+                <div className="w-16 h-16 bg-[--primary] rounded-2xl flex items-center justify-center mb-6 transform group-hover:scale-110 transition-transform">
+                  <Shield className="w-8 h-8 text-[--background]" />
                 </div>
                 
                 <h2 className="text-2xl font-bold text-white mb-3">
@@ -297,24 +295,24 @@ export default function RoleSelectionPage() {
                 
                 <div className="space-y-2 mb-6">
                   <div className="flex items-center text-sm text-gray-300">
-                    <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-2"></div>
+                    <div className="w-1.5 h-1.5 bg-[--primary] rounded-full mr-2"></div>
                     <span>Add/remove all listings</span>
                   </div>
                   <div className="flex items-center text-sm text-gray-300">
-                    <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-2"></div>
+                    <div className="w-1.5 h-1.5 bg-[--primary] rounded-full mr-2"></div>
                     <span>Manage property status</span>
                   </div>
                   <div className="flex items-center text-sm text-gray-300">
-                    <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-2"></div>
+                    <div className="w-1.5 h-1.5 bg-[--primary] rounded-full mr-2"></div>
                     <span>View analytics</span>
                   </div>
                   <div className="flex items-center text-sm text-gray-300">
-                    <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-2"></div>
+                    <div className="w-1.5 h-1.5 bg-[--primary] rounded-full mr-2"></div>
                     <span>System administration</span>
                   </div>
                 </div>
                 
-                <div className="flex items-center text-emerald-600 font-medium group-hover:translate-x-2 transition-transform">
+                <div className="flex items-center text-[--primary] font-medium group-hover:translate-x-2 transition-transform">
                   <span>Continue as Admin</span>
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </div>

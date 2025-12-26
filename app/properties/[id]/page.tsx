@@ -104,7 +104,7 @@ export default function PropertyDetailPage() {
               <motion.div
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="inline-flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-[--accent] to-[--primary] text-white rounded-full font-bold"
+                className="inline-flex items-center space-x-2 px-4 py-2 bg-[--primary] text-[--background] rounded-full font-bold"
               >
                 <Star className="w-5 h-5" />
                 <span>FEATURED PROPERTY</span>
@@ -170,7 +170,7 @@ export default function PropertyDetailPage() {
                 <MapPin className="w-5 h-5 mr-2" />
                 <span>{property.location.address}, {property.location.city}, {property.location.state} {property.location.zipCode}</span>
               </div>
-              <div className="inline-block px-4 py-2 bg-blue-500/20 border border-blue-500/30 text-blue-300 rounded-lg font-medium">
+              <div className="inline-block px-4 py-2 bg-[--primary]/10 border border-[--primary]/20 text-[--primary] rounded-lg font-medium">
                 {property.type}
               </div>
             </div>
@@ -240,8 +240,8 @@ export default function PropertyDetailPage() {
                 <div className="grid md:grid-cols-2 gap-3">
                   {property.highlights.map((highlight: string, idx: number) => (
                     <div key={idx} className="flex items-start space-x-3">
-                      <div className="w-6 h-6 bg-green-500/20 border border-green-500/30 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <Check className="w-4 h-4 text-green-400" />
+                      <div className="w-6 h-6 bg-[--primary]/10 border border-[--primary]/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Check className="w-4 h-4 text-[--primary]" />
                       </div>
                       <span className="text-gray-400">{highlight}</span>
                     </div>
@@ -252,10 +252,10 @@ export default function PropertyDetailPage() {
 
             {/* Tenant Status */}
             {property.tenantOccupied && (
-              <div className="bg-green-500/10 border border-green-500/30 rounded-2xl p-6">
+              <div className="bg-[--success]/10 border border-[--success]/20 rounded-2xl p-6">
                 <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center">
-                    <Check className="w-6 h-6 text-green-400" />
+                  <div className="w-12 h-12 bg-[--success]/20 rounded-full flex items-center justify-center">
+                    <Check className="w-6 h-6 text-[--success]" />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white">Tenant Occupied</h3>
@@ -284,28 +284,28 @@ export default function PropertyDetailPage() {
 
                 <div className="border-t border-[--border-light] pt-6 space-y-4">
                   {/* ROI */}
-                  <div className="flex items-center justify-between p-4 bg-purple-500/10 border border-purple-500/30 rounded-xl">
+                  <div className="flex items-center justify-between p-4 bg-[--primary]/10 border border-[--primary]/20 rounded-xl">
                     <div className="flex items-center space-x-2">
-                      <TrendingUp className="w-5 h-5 text-purple-400" />
+                      <TrendingUp className="w-5 h-5 text-[--primary]" />
                       <span className="text-gray-400">ROI</span>
                     </div>
-                    <span className="text-2xl font-bold text-purple-400">{property.roi}%</span>
+                    <span className="text-2xl font-bold text-[--primary]">{property.roi}%</span>
                   </div>
 
                   {/* Cash Flow */}
-                  <div className="flex items-center justify-between p-4 bg-green-500/10 border border-green-500/30 rounded-xl">
+                  <div className="flex items-center justify-between p-4 bg-[--success]/10 border border-[--success]/20 rounded-xl">
                     <div className="flex items-center space-x-2">
-                      <DollarSign className="w-5 h-5 text-green-400" />
+                      <DollarSign className="w-5 h-5 text-[--success]" />
                       <span className="text-gray-400">Monthly Cash Flow</span>
                     </div>
-                    <span className="text-2xl font-bold text-green-400">{formatPrice(property.cashFlow)}</span>
+                    <span className="text-2xl font-bold text-[--success]">{formatPrice(property.cashFlow)}</span>
                   </div>
                 </div>
 
                 {/* Contact Button */}
                 <button
                   onClick={() => setIsContactModalOpen(true)}
-                  className="w-full py-4 bg-gradient-to-r from-emerald-600 to-green-600 text-white font-bold rounded-xl hover:from-emerald-700 hover:to-green-700 hover:shadow-xl transform hover:scale-[1.02] transition-all duration-200"
+                  className="w-full py-4 bg-[--primary] text-[--background] font-bold rounded-xl hover:bg-[--primary-light] transition-all duration-200"
                 >
                   Contact Seller
                 </button>
@@ -313,26 +313,26 @@ export default function PropertyDetailPage() {
                 {/* Contact Info */}
                 <div className="border-t border-[--border-light] pt-6">
                   <h3 className="text-sm font-semibold text-white mb-4">Listed By</h3>
-                  <div className="space-y-3">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-gradient-to-br from-[--primary] to-[--accent] rounded-full flex items-center justify-center">
-                        <User className="w-5 h-5 text-white" />
+                    <div className="space-y-3">
+                      <div className="flex items-center space-x-3">
+                        <div className="w-10 h-10 bg-[--primary] rounded-full flex items-center justify-center">
+                          <User className="w-5 h-5 text-[--background]" />
+                        </div>
+                        <div>
+                          <div className="font-semibold text-white">{property.contact.name}</div>
+                          <div className="text-sm text-gray-500">Property Agent</div>
+                        </div>
                       </div>
-                      <div>
-                        <div className="font-semibold text-white">{property.contact.name}</div>
-                        <div className="text-sm text-gray-500">Property Agent</div>
-                      </div>
-                    </div>
-                    <div className="space-y-2 text-sm">
-                      <a 
-                        href={`https://wa.me/${property.contact.phone.replace(/\D/g, '')}?text=${encodeURIComponent(`Hi, I'm interested in: ${property.title}`)}`}
-                        target="_blank"
-                        rel="noopener noreferrer" 
-                        className="flex items-center space-x-2 text-gray-400 hover:text-green-400 transition-colors"
-                      >
-                        <MessageCircle className="w-4 h-4 text-green-400" />
-                        <span>WhatsApp</span>
-                      </a>
+                      <div className="space-y-2 text-sm">
+                        <a 
+                          href={`https://wa.me/${property.contact.phone.replace(/\D/g, '')}?text=${encodeURIComponent(`Hi, I'm interested in: ${property.title}`)}`}
+                          target="_blank"
+                          rel="noopener noreferrer" 
+                          className="flex items-center space-x-2 text-gray-400 hover:text-[--primary] transition-colors"
+                        >
+                          <MessageCircle className="w-4 h-4 text-[--primary]" />
+                          <span>WhatsApp</span>
+                        </a>
                       <a href={`mailto:${property.contact.email}`} className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors">
                         <Mail className="w-4 h-4" />
                         <span>{property.contact.email}</span>

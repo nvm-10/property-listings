@@ -97,14 +97,11 @@ export default function PropertiesPage() {
   return (
     <div className="min-h-screen pt-20 pb-0 bg-[--background]">
       {/* Header */}
-      <section className="relative pt-24 md:pt-32 pb-12 md:pb-16 bg-gradient-to-br from-[--background] via-blue-950/50 to-purple-950/50 text-white overflow-hidden border-b border-[--border]">
-        {/* Animated Background Pattern */}
+      <section className="relative pt-24 md:pt-32 pb-12 md:pb-16 bg-[--background] text-white overflow-hidden border-b border-[--border]">
+        {/* Subtle Background */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSg1OSwxMzAsMjQ2LDAuMSkiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')] opacity-40" />
-          
-          {/* Gradient Orbs */}
-          <div className="absolute top-1/2 -left-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-1/2 -right-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+          <div className="absolute top-1/2 -left-20 w-96 h-96 bg-[--primary]/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-1/2 -right-20 w-96 h-96 bg-[--primary]/5 rounded-full blur-3xl" />
         </div>
         
         <div className="container mx-auto px-4 relative z-10">
@@ -174,7 +171,7 @@ export default function PropertiesPage() {
                 onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}
                 className={`flex items-center justify-center space-x-1 md:space-x-2 px-2 md:px-4 py-2.5 md:py-3 rounded-xl font-medium transition-all text-xs md:text-sm ${
                   showAdvancedFilters || hasActiveFilters
-                    ? 'bg-gradient-to-r from-[--primary] to-[--accent] text-white'
+                    ? 'bg-[--primary] text-[--background]'
                     : 'border border-[--border-light] text-gray-300 hover:bg-[--background-tertiary]'
                 }`}
               >

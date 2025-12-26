@@ -94,8 +94,8 @@ export default function AdminDashboard() {
           animate={{ opacity: 1, y: 0 }}
           className="mb-8"
         >
-          <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
-            Admin Dashboard
+          <h1 className="text-4xl font-bold mb-2 text-white">
+            Admin <span className="text-[--primary]">Dashboard</span>
           </h1>
           <p className="text-gray-400">
             Manage all property listings and system settings

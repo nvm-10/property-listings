@@ -7,27 +7,19 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-gradient-to-br from-[--background] via-blue-950/50 to-purple-950/50 border-t border-[--border] overflow-hidden">
-      {/* Animated Background Pattern */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSg1OSwxMzAsMjQ2LDAuMSkiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')] opacity-40" />
-        
-        {/* Gradient Orbs */}
-        <div className="absolute top-1/2 -left-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/2 -right-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
-      </div>
+    <footer className="relative bg-[--background-secondary] border-t border-[--border] overflow-hidden">
 
-      <div className="relative z-10 container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-12">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Brand Section */}
           <div>
             <Link href="/" className="flex items-center space-x-2 mb-4 group">
-              <div className="w-10 h-10 bg-gradient-to-br from-[--primary] to-[--accent] rounded-lg flex items-center justify-center transform transition-transform group-hover:scale-110">
-                <Building2 className="w-6 h-6 text-white" />
+              <div className="w-10 h-10 bg-[--primary] rounded-lg flex items-center justify-center transform transition-transform group-hover:scale-105">
+                <Building2 className="w-6 h-6 text-[--background]" />
               </div>
-              <span className="text-2xl font-bold gradient-text">
-                PropertyHub
+              <span className="text-2xl font-bold text-white">
+                Property<span className="text-[--primary]">Hub</span>
               </span>
             </Link>
             <p className="text-gray-400 text-sm mb-4">
@@ -37,10 +29,10 @@ export default function Footer() {
               href="https://wa.me/18669646088?text=Hi%2C%20I%27m%20interested%20in%20your%20properties"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center space-x-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium text-sm transition-all"
+              className="inline-flex items-center space-x-2 px-4 py-2 bg-[--primary] hover:bg-[--primary-light] text-[--background] rounded-lg font-medium text-sm transition-all"
             >
               <MessageCircle className="w-4 h-4" />
-              <span>WhatsApp</span>
+              <span>Contact Us</span>
             </a>
           </div>
 
@@ -76,19 +68,19 @@ export default function Footer() {
             <h3 className="text-white font-bold text-lg mb-4">Why Invest</h3>
             <ul className="space-y-2">
               <li className="text-gray-400 text-sm flex items-center space-x-2">
-                <span className="w-1.5 h-1.5 bg-green-400 rounded-full"></span>
+                <span className="w-1.5 h-1.5 bg-[--primary] rounded-full"></span>
                 <span>Positive Cash Flow</span>
               </li>
               <li className="text-gray-400 text-sm flex items-center space-x-2">
-                <span className="w-1.5 h-1.5 bg-green-400 rounded-full"></span>
+                <span className="w-1.5 h-1.5 bg-[--primary] rounded-full"></span>
                 <span>High ROI Properties</span>
               </li>
               <li className="text-gray-400 text-sm flex items-center space-x-2">
-                <span className="w-1.5 h-1.5 bg-green-400 rounded-full"></span>
+                <span className="w-1.5 h-1.5 bg-[--primary] rounded-full"></span>
                 <span>Tenant Occupied</span>
               </li>
               <li className="text-gray-400 text-sm flex items-center space-x-2">
-                <span className="w-1.5 h-1.5 bg-green-400 rounded-full"></span>
+                <span className="w-1.5 h-1.5 bg-[--primary] rounded-full"></span>
                 <span>Turnkey Properties</span>
               </li>
             </ul>
@@ -99,20 +91,20 @@ export default function Footer() {
             <h3 className="text-white font-bold text-lg mb-4">Contact Us</h3>
             <ul className="space-y-3">
               <li>
-                <a href="https://wa.me/18669646088?text=Hi%2C%20I%27m%20interested%20in%20your%20properties" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-gray-400 hover:text-green-400 transition-colors text-sm">
-                  <MessageCircle className="w-4 h-4 text-green-400" />
+                <a href="https://wa.me/18669646088?text=Hi%2C%20I%27m%20interested%20in%20your%20properties" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-gray-400 hover:text-[--primary] transition-colors text-sm">
+                  <MessageCircle className="w-4 h-4 text-[--primary]" />
                   <span>WhatsApp Us</span>
                 </a>
               </li>
               <li>
-                <a href="mailto:info@propertyhub.com" className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors text-sm">
-                  <Mail className="w-4 h-4 text-[--primary-light]" />
+                <a href="mailto:info@propertyhub.com" className="flex items-center space-x-2 text-gray-400 hover:text-[--primary] transition-colors text-sm">
+                  <Mail className="w-4 h-4 text-[--primary]" />
                   <span>info@propertyhub.com</span>
                 </a>
               </li>
               <li>
                 <div className="flex items-start space-x-2 text-gray-400 text-sm">
-                  <MapPin className="w-4 h-4 text-[--primary-light] mt-1 flex-shrink-0" />
+                  <MapPin className="w-4 h-4 text-[--primary] mt-1 flex-shrink-0" />
                   <span>123 Investment Blvd<br />Suite 100<br />Real Estate City, RE 12345</span>
                 </div>
               </li>

@@ -26,9 +26,9 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
   };
 
   const features = [
-    { text: 'Browse and invest in properties', color: 'from-blue-500 to-cyan-500' },
-    { text: 'List and manage your properties', color: 'from-purple-500 to-pink-500' },
-    { text: 'Schedule property visits', color: 'from-emerald-500 to-teal-500' },
+    { text: 'Browse and invest in properties' },
+    { text: 'List and manage your properties' },
+    { text: 'Schedule property visits' },
   ];
 
   const containerVariants = {
@@ -102,52 +102,17 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
             >
               {/* Animated Header */}
               <div className="relative overflow-hidden">
-                {/* Animated gradient background */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-[--primary] via-[--accent] to-purple-600"
-                  animate={{
-                    backgroundPosition: ['0% 0%', '100% 100%', '0% 0%'],
-                  }}
-                  transition={{
-                    duration: 10,
-                    repeat: Infinity,
-                    ease: 'linear',
-                  }}
-                  style={{ backgroundSize: '200% 200%' }}
-                />
-                
-                {/* Floating particles */}
-                <div className="absolute inset-0 overflow-hidden">
-                  {[...Array(6)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      className="absolute w-2 h-2 bg-white/20 rounded-full"
-                      style={{
-                        left: `${15 + i * 15}%`,
-                        top: `${20 + (i % 3) * 25}%`,
-                      }}
-                      animate={{
-                        y: [0, -20, 0],
-                        opacity: [0.2, 0.6, 0.2],
-                        scale: [1, 1.2, 1],
-                      }}
-                      transition={{
-                        duration: 3 + i * 0.5,
-                        repeat: Infinity,
-                        delay: i * 0.3,
-                      }}
-                    />
-                  ))}
-                </div>
+                {/* Professional solid background */}
+                <div className="absolute inset-0 bg-[--primary]" />
 
-                <div className="relative p-6 text-white">
+                <div className="relative p-6 text-[--background]">
                   {/* Close button */}
                   <motion.button
                     onClick={onClose}
-                    whileHover={{ scale: 1.1, rotate: 90 }}
+                    whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     transition={{ type: 'spring', stiffness: 400, damping: 17 }}
-                    className="absolute top-4 right-4 p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors backdrop-blur-sm"
+                    className="absolute top-4 right-4 p-2 bg-[--background]/10 hover:bg-[--background]/20 rounded-full transition-colors"
                   >
                     <X className="w-5 h-5" />
                   </motion.button>
@@ -158,32 +123,14 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
                     animate="visible"
                     className="flex flex-col items-center"
                   >
-                    {/* Animated Logo */}
+                    {/* Logo */}
                     <motion.div
                       variants={itemVariants}
                       className="relative mb-3"
                     >
-                      <motion.div
-                        className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center"
-                        whileHover={{ scale: 1.05 }}
-                        animate={{
-                          boxShadow: [
-                            '0 0 20px rgba(255,255,255,0.2)',
-                            '0 0 40px rgba(255,255,255,0.3)',
-                            '0 0 20px rgba(255,255,255,0.2)',
-                          ],
-                        }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                      >
+                      <div className="w-16 h-16 bg-[--background]/20 rounded-2xl flex items-center justify-center">
                         <Building2 className="w-8 h-8" />
-                      </motion.div>
-                      <motion.div
-                        className="absolute -top-1 -right-1"
-                        animate={{ rotate: [0, 15, -15, 0] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                      >
-                        <Sparkles className="w-5 h-5 text-yellow-300" />
-                      </motion.div>
+                      </div>
                     </motion.div>
 
                     <motion.h2
@@ -194,7 +141,7 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
                     </motion.h2>
                     <motion.p
                       variants={itemVariants}
-                      className="text-center text-blue-100/90 text-sm"
+                      className="text-center text-[--background]/70 text-sm"
                     >
                       Sign in to continue
                     </motion.p>
@@ -215,11 +162,11 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
                   onClick={handleGoogleSignIn}
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
-                  className="group w-full relative overflow-hidden rounded-2xl transition-all duration-300"
+                  className="group w-full relative overflow-hidden rounded-xl transition-all duration-300"
                 >
-                  {/* Button background with gradient border effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-[--primary] via-[--accent] to-purple-500 rounded-2xl" />
-                  <div className="absolute inset-[2px] bg-[#1a1f2e] rounded-[14px]" />
+                  {/* Button background with border effect */}
+                  <div className="absolute inset-0 bg-[--primary] rounded-xl" />
+                  <div className="absolute inset-[2px] bg-[--background-secondary] rounded-[10px]" />
                   
                   {/* Button content */}
                   <div className="relative flex items-center justify-center space-x-3 px-6 py-4">
@@ -297,10 +244,10 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
                       initial="hidden"
                       animate="visible"
                       whileHover={{ x: 4 }}
-                      className="flex items-center space-x-3 p-2.5 rounded-xl bg-[#252b3b] hover:bg-[#2d3548] transition-colors group"
+                      className="flex items-center space-x-3 p-2.5 rounded-xl bg-[--background-tertiary] hover:bg-[--border-light]/50 transition-colors group"
                     >
-                      <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${feature.color} flex items-center justify-center shadow-lg`}>
-                        <CheckCircle2 className="w-4 h-4 text-white" />
+                      <div className="w-8 h-8 rounded-lg bg-[--primary]/10 border border-[--primary]/20 flex items-center justify-center">
+                        <CheckCircle2 className="w-4 h-4 text-[--primary]" />
                       </div>
                       <span className="text-sm text-gray-300 group-hover:text-white transition-colors">
                         {feature.text}
@@ -315,9 +262,9 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
                   className="text-xs text-gray-500 text-center mt-6 leading-relaxed"
                 >
                   By continuing, you agree to our{' '}
-                  <span className="text-[--primary-light] hover:underline cursor-pointer">Terms of Service</span>
+                  <span className="text-[--primary] hover:underline cursor-pointer">Terms of Service</span>
                   {' '}and{' '}
-                  <span className="text-[--primary-light] hover:underline cursor-pointer">Privacy Policy</span>
+                  <span className="text-[--primary] hover:underline cursor-pointer">Privacy Policy</span>
                 </motion.p>
               </motion.div>
             </motion.div>
