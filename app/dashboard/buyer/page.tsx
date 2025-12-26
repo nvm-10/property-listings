@@ -67,8 +67,8 @@ export default function BuyerDashboard() {
           className="mb-8">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center">
-                <Search className="w-6 h-6 text-white" />
+              <div className="w-12 h-12 bg-[--primary] rounded-xl flex items-center justify-center">
+                <Search className="w-6 h-6 text-[--background]" />
               </div>
               <div>
                 <h1 className="text-3xl font-bold text-white">
@@ -178,14 +178,14 @@ export default function BuyerDashboard() {
                   href="/properties?featured=true"
                   className="flex items-center space-x-3 p-3 hover:bg-[--background-tertiary] rounded-xl transition-colors"
                 >
-                  <TrendingUp className="w-5 h-5 text-green-400" />
+                  <TrendingUp className="w-5 h-5 text-[--primary]" />
                   <span className="font-medium text-gray-300">Featured Deals</span>
                 </Link>
                 <a
                   href="tel:1-866-964-6088"
                   className="flex items-center space-x-3 p-3 hover:bg-[--background-tertiary] rounded-xl transition-colors"
                 >
-                  <MapPin className="w-5 h-5 text-purple-400" />
+                  <MapPin className="w-5 h-5 text-[--primary]" />
                   <span className="font-medium text-gray-300">Call: 1-866-964-6088</span>
                 </a>
               </div>

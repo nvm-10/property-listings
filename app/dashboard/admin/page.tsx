@@ -108,11 +108,11 @@ export default function AdminDashboard() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="bg-[--background-secondary] border border-[--border] rounded-2xl shadow-xl p-6 border-l-4 border-emerald-500"
+            className="bg-[--background-secondary] border border-[--border] rounded-2xl shadow-xl p-6 border-l-4 border-[--primary]"
           >
             <div className="flex items-center justify-between mb-2">
               <span className="text-gray-400 text-sm font-medium">Total Properties</span>
-              <Building2 className="w-5 h-5 text-emerald-600" />
+              <Building2 className="w-5 h-5 text-[--primary]" />
             </div>
             <p className="text-3xl font-bold text-white">{stats.total}</p>
           </motion.div>
@@ -121,11 +121,11 @@ export default function AdminDashboard() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="bg-[--background-secondary] border border-[--border] rounded-2xl shadow-xl p-6 border-l-4 border-blue-500"
+            className="bg-[--background-secondary] border border-[--border] rounded-2xl shadow-xl p-6 border-l-4 border-[--primary]"
           >
             <div className="flex items-center justify-between mb-2">
               <span className="text-gray-400 text-sm font-medium">Available</span>
-              <Eye className="w-5 h-5 text-blue-600" />
+              <Eye className="w-5 h-5 text-[--primary]" />
             </div>
             <p className="text-3xl font-bold text-white">{stats.available}</p>
           </motion.div>
@@ -134,11 +134,11 @@ export default function AdminDashboard() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="bg-[--background-secondary] border border-[--border] rounded-2xl shadow-xl p-6 border-l-4 border-yellow-500"
+            className="bg-[--background-secondary] border border-[--border] rounded-2xl shadow-xl p-6 border-l-4 border-amber-500"
           >
             <div className="flex items-center justify-between mb-2">
               <span className="text-gray-400 text-sm font-medium">Pending</span>
-              <Calendar className="w-5 h-5 text-yellow-600" />
+              <Calendar className="w-5 h-5 text-amber-500" />
             </div>
             <p className="text-3xl font-bold text-white">{stats.pending}</p>
           </motion.div>
@@ -147,11 +147,11 @@ export default function AdminDashboard() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="bg-[--background-secondary] border border-[--border] rounded-2xl shadow-xl p-6 border-l-4 border-green-500"
+            className="bg-[--background-secondary] border border-[--border] rounded-2xl shadow-xl p-6 border-l-4 border-green-600"
           >
             <div className="flex items-center justify-between mb-2">
               <span className="text-gray-400 text-sm font-medium">Sold</span>
-              <DollarSign className="w-5 h-5 text-green-600" />
+              <DollarSign className="w-5 h-5 text-green-500" />
             </div>
             <p className="text-3xl font-bold text-white">{stats.sold}</p>
           </motion.div>
@@ -168,19 +168,19 @@ export default function AdminDashboard() {
           <div className="flex flex-wrap gap-4">
             <Link
               href="/dashboard/seller"
-              className="px-6 py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors font-medium"
+              className="px-6 py-3 bg-[--primary] text-[--background] rounded-lg hover:bg-[--primary-light] transition-colors font-medium"
             >
               Add New Property
             </Link>
             <Link
               href="/properties"
-              className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+              className="px-6 py-3 bg-slate-700 text-white rounded-lg hover:bg-slate-600 transition-colors font-medium"
             >
               View All Listings
             </Link>
             <Link
               href="/closed-deals"
-              className="px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors font-medium"
+              className="px-6 py-3 bg-slate-800 text-white rounded-lg hover:bg-slate-700 transition-colors font-medium"
             >
               Closed Deals
             </Link>
@@ -272,10 +272,10 @@ export default function AdminDashboard() {
                           onChange={(e) => handleStatusChange(property.id, e.target.value as any)}
                           className={`px-3 py-1 rounded-full text-sm font-medium border-2 transition-colors ${
                             property.status === 'Available'
-                              ? 'bg-blue-50 text-blue-700 border-blue-200'
+                              ? 'bg-[--primary]/10 text-[--primary] border-[--primary]/30'
                               : property.status === 'Pending'
-                              ? 'bg-yellow-50 text-yellow-700 border-yellow-200'
-                              : 'bg-green-50 text-green-700 border-green-200'
+                              ? 'bg-amber-500/10 text-amber-400 border-amber-500/30'
+                              : 'bg-green-500/10 text-green-400 border-green-500/30'
                           }`}
                         >
                           <option value="Available">Available</option>
@@ -293,14 +293,14 @@ export default function AdminDashboard() {
                         <div className="flex items-center justify-end gap-2">
                           <Link
                             href={`/properties/${property.id}`}
-                            className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                            className="p-2 text-[--primary] hover:bg-[--primary]/10 rounded-lg transition-colors"
                             title="View property"
                           >
                             <Eye className="w-5 h-5" />
                           </Link>
                           <button
                             onClick={() => handleDeleteClick(property.id)}
-                            className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                            className="p-2 text-red-400 hover:bg-red-500/10 rounded-lg transition-colors"
                             title="Delete property"
                           >
                             <Trash2 className="w-5 h-5" />
@@ -322,11 +322,11 @@ export default function AdminDashboard() {
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6"
+            className="bg-[--background-secondary] border border-[--border] rounded-2xl shadow-2xl max-w-md w-full p-6"
           >
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
-                <Trash2 className="w-6 h-6 text-red-600" />
+              <div className="w-12 h-12 bg-red-500/10 rounded-full flex items-center justify-center">
+                <Trash2 className="w-6 h-6 text-red-400" />
               </div>
               <div>
                 <h3 className="text-xl font-bold text-white">Delete Property</h3>
@@ -342,7 +342,7 @@ export default function AdminDashboard() {
                   setShowDeleteConfirm(false);
                   setSelectedProperty(null);
                 }}
-                className="flex-1 px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors font-medium"
+                className="flex-1 px-4 py-2 bg-[--background-tertiary] text-gray-300 rounded-lg hover:bg-[--border-light] transition-colors font-medium"
               >
                 Cancel
               </button>

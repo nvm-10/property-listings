@@ -305,7 +305,7 @@ export default function SellerDashboard() {
           {/* Financial Info */}
           <div className="space-y-4">
             <h3 className="text-lg font-bold text-white flex items-center">
-              <DollarSign className="w-5 h-5 mr-2 text-green-600" />
+              <DollarSign className="w-5 h-5 mr-2 text-[--primary]" />
               Financial Details
             </h3>
             
@@ -358,7 +358,7 @@ export default function SellerDashboard() {
           {/* Location */}
           <div className="space-y-4">
             <h3 className="text-lg font-bold text-white flex items-center">
-              <MapPin className="w-5 h-5 mr-2 text-red-600" />
+              <MapPin className="w-5 h-5 mr-2 text-[--primary]" />
               Location
             </h3>
             
@@ -405,7 +405,7 @@ export default function SellerDashboard() {
           {/* Property Features */}
           <div className="space-y-4">
             <h3 className="text-lg font-bold text-white flex items-center">
-              <Maximize className="w-5 h-5 mr-2 text-purple-600" />
+              <Maximize className="w-5 h-5 mr-2 text-[--primary]" />
               Property Features
             </h3>
             
@@ -521,7 +521,7 @@ export default function SellerDashboard() {
           <div className="flex items-center justify-end space-x-4 pt-6 border-t">
             <button
               type="button"
-              className="px-6 py-3 border border-[--border-light] text-gray-300 rounded-xl font-medium hover:bg-gray-50 transition-colors"
+              className="px-6 py-3 border border-[--border-light] text-gray-300 rounded-xl font-medium hover:bg-[--background-tertiary] transition-colors"
             >
               Save as Draft
             </button>
