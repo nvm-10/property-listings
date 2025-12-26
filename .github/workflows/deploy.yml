@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - v2-professional-design
   pull_request:
     branches:
       - main
