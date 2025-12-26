@@ -52,7 +52,7 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
       opacity: 1,
       y: 0,
       transition: {
-        type: 'spring',
+        type: 'spring' as const,
         stiffness: 300,
         damping: 24,
       },
@@ -66,7 +66,7 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
       x: 0,
       transition: {
         delay: 0.4 + i * 0.1,
-        type: 'spring',
+        type: 'spring' as const,
         stiffness: 300,
         damping: 24,
       },
