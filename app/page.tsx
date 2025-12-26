@@ -96,8 +96,8 @@ export default function Home() {
       </section>
 
 
-      {/* Featured Properties */}
-      <section className="py-20 bg-[--background-secondary]">
+      {/* Featured Properties - White Section */}
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -106,17 +106,17 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Featured <span className="text-[--primary]">Properties</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-[--foreground-dark] mb-4">
+              Featured <span className="text-[--primary-dark]">Properties</span>
             </h2>
-            <p className="text-xl text-[--foreground-secondary] max-w-2xl mx-auto">
+            <p className="text-xl text-[--foreground-dark-secondary] max-w-2xl mx-auto">
               Discover verified property listings from sellers
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredProperties.map((property, index) => (
-              <PropertyCard key={property.id} property={property} index={index} />
+              <PropertyCard key={property.id} property={property} index={index} variant="light" />
             ))}
           </div>
 
@@ -129,7 +129,7 @@ export default function Home() {
           >
             <Link
               href="/properties"
-              className="inline-flex items-center space-x-2 px-10 py-5 bg-[--primary] text-[--background] rounded-xl text-lg font-bold hover:bg-[--primary-light] transition-all shadow-lg shadow-[--primary]/20"
+              className="inline-flex items-center space-x-2 px-10 py-5 bg-[--background] text-white rounded-xl text-lg font-bold hover:bg-[--background-secondary] transition-all shadow-lg"
             >
               <span>View All Properties</span>
               <ArrowRight className="w-5 h-5" />

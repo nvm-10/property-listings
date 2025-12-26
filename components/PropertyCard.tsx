@@ -24,9 +24,11 @@ import ContactModal from './ContactModal';
 interface PropertyCardProps {
   property: Property;
   index?: number;
+  variant?: 'dark' | 'light';
 }
 
-export default function PropertyCard({ property, index = 0 }: PropertyCardProps) {
+export default function PropertyCard({ property, index = 0, variant = 'dark' }: PropertyCardProps) {
+  const isLight = variant === 'light';
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -43,7 +45,11 @@ export default function PropertyCard({ property, index = 0 }: PropertyCardProps)
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group relative bg-[--background-secondary] border border-[--border] rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 card-hover cursor-pointer"
+      className={`group relative rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 card-hover cursor-pointer ${
+        isLight 
+          ? 'bg-white border border-gray-200' 
+          : 'bg-[--background-secondary] border border-[--border]'
+      }`}
     >
       {/* Featured Badge */}
       {property.featured && (
@@ -81,11 +87,13 @@ export default function PropertyCard({ property, index = 0 }: PropertyCardProps)
         {/* Title and Location */}
         <div>
           <Link href={`/properties/${property.id}`}>
-            <h3 className="text-xl font-bold text-white hover:text-[--primary-light] transition-colors line-clamp-1">
+            <h3 className={`text-xl font-bold transition-colors line-clamp-1 ${
+              isLight ? 'text-slate-800 hover:text-[--primary]' : 'text-white hover:text-[--primary-light]'
+            }`}>
               {property.title}
             </h3>
           </Link>
-          <div className="flex items-center mt-2 text-gray-400 text-sm">
+          <div className={`flex items-center mt-2 text-sm ${isLight ? 'text-slate-500' : 'text-gray-400'}`}>
             <MapPin className="w-4 h-4 mr-1" />
             <span>{property.location.city}, {property.location.state}</span>
           </div>
@@ -97,7 +105,7 @@ export default function PropertyCard({ property, index = 0 }: PropertyCardProps)
         </div>
 
         {/* Features */}
-        <div className="flex items-center justify-between text-gray-400 text-sm">
+        <div className={`flex items-center justify-between text-sm ${isLight ? 'text-slate-500' : 'text-gray-400'}`}>
           {property.features.bedrooms && (
             <div className="flex items-center space-x-1">
               <Bed className="w-4 h-4" />
@@ -117,18 +125,18 @@ export default function PropertyCard({ property, index = 0 }: PropertyCardProps)
         </div>
 
         {/* Price and ROI */}
-        <div className="flex items-center justify-between pt-4 border-t border-[--border-light]">
+        <div className={`flex items-center justify-between pt-4 border-t ${isLight ? 'border-gray-200' : 'border-[--border-light]'}`}>
           <div>
-            <div className="flex items-center space-x-1 text-gray-500 text-xs mb-1">
+            <div className={`flex items-center space-x-1 text-xs mb-1 ${isLight ? 'text-slate-500' : 'text-gray-500'}`}>
               <DollarSign className="w-3 h-3" />
               <span>Price</span>
             </div>
-            <div className="text-2xl font-bold text-white">
+            <div className={`text-2xl font-bold ${isLight ? 'text-slate-800' : 'text-white'}`}>
               {formatPrice(property.price)}
             </div>
           </div>
           <div className="text-right">
-            <div className="flex items-center justify-end space-x-1 text-gray-500 text-xs mb-1">
+            <div className={`flex items-center justify-end space-x-1 text-xs mb-1 ${isLight ? 'text-slate-500' : 'text-gray-500'}`}>
               <TrendingUp className="w-3 h-3" />
               <span>ROI</span>
             </div>
@@ -139,8 +147,12 @@ export default function PropertyCard({ property, index = 0 }: PropertyCardProps)
         </div>
 
         {/* Cash Flow */}
-        <div className="flex items-center justify-between p-3 bg-[--success]/10 border border-[--success]/20 rounded-lg">
-          <span className="text-sm font-medium text-gray-300">Monthly Cash Flow</span>
+        <div className={`flex items-center justify-between p-3 rounded-lg ${
+          isLight 
+            ? 'bg-green-50 border border-green-200' 
+            : 'bg-[--success]/10 border border-[--success]/20'
+        }`}>
+          <span className={`text-sm font-medium ${isLight ? 'text-slate-600' : 'text-gray-300'}`}>Monthly Cash Flow</span>
           <span className="text-lg font-bold text-[--success]">
             {formatPrice(property.cashFlow)}
           </span>
@@ -162,25 +174,25 @@ export default function PropertyCard({ property, index = 0 }: PropertyCardProps)
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="space-y-4 pt-4 border-t border-[--border-light]"
+            className={`space-y-4 pt-4 border-t ${isLight ? 'border-gray-200' : 'border-[--border-light]'}`}
           >
             {/* Property Type & Year */}
             <div className="grid grid-cols-2 gap-3">
               {property.features.yearBuilt && (
                 <div className="flex items-center space-x-2 text-sm">
-                  <Calendar className="w-4 h-4 text-gray-500" />
+                  <Calendar className={`w-4 h-4 ${isLight ? 'text-slate-400' : 'text-gray-500'}`} />
                   <div>
-                    <div className="text-gray-500 text-xs">Year Built</div>
-                    <div className="text-white font-medium">{property.features.yearBuilt}</div>
+                    <div className={`text-xs ${isLight ? 'text-slate-500' : 'text-gray-500'}`}>Year Built</div>
+                    <div className={`font-medium ${isLight ? 'text-slate-800' : 'text-white'}`}>{property.features.yearBuilt}</div>
                   </div>
                 </div>
               )}
               {property.features.units && (
                 <div className="flex items-center space-x-2 text-sm">
-                  <Home className="w-4 h-4 text-gray-500" />
+                  <Home className={`w-4 h-4 ${isLight ? 'text-slate-400' : 'text-gray-500'}`} />
                   <div>
-                    <div className="text-gray-500 text-xs">Units</div>
-                    <div className="text-white font-medium">{property.features.units}</div>
+                    <div className={`text-xs ${isLight ? 'text-slate-500' : 'text-gray-500'}`}>Units</div>
+                    <div className={`font-medium ${isLight ? 'text-slate-800' : 'text-white'}`}>{property.features.units}</div>
                   </div>
                 </div>
               )}
@@ -189,15 +201,15 @@ export default function PropertyCard({ property, index = 0 }: PropertyCardProps)
             {/* Description */}
             {property.description && (
               <div>
-                <h4 className="text-sm font-semibold text-white mb-2">Description</h4>
-                <p className="text-sm text-gray-400 line-clamp-3">{property.description}</p>
+                <h4 className={`text-sm font-semibold mb-2 ${isLight ? 'text-slate-800' : 'text-white'}`}>Description</h4>
+                <p className={`text-sm line-clamp-3 ${isLight ? 'text-slate-500' : 'text-gray-400'}`}>{property.description}</p>
               </div>
             )}
 
             {/* Location Details */}
             <div>
-              <h4 className="text-sm font-semibold text-white mb-2">Location</h4>
-              <div className="text-sm text-gray-400">
+              <h4 className={`text-sm font-semibold mb-2 ${isLight ? 'text-slate-800' : 'text-white'}`}>Location</h4>
+              <div className={`text-sm ${isLight ? 'text-slate-500' : 'text-gray-400'}`}>
                 <div>{property.location.address}</div>
                 <div>{property.location.city}, {property.location.state} {property.location.zipCode}</div>
               </div>
@@ -206,10 +218,10 @@ export default function PropertyCard({ property, index = 0 }: PropertyCardProps)
             {/* Highlights */}
             {property.highlights && property.highlights.length > 0 && (
               <div>
-                <h4 className="text-sm font-semibold text-white mb-2">Highlights</h4>
+                <h4 className={`text-sm font-semibold mb-2 ${isLight ? 'text-slate-800' : 'text-white'}`}>Highlights</h4>
                 <div className="space-y-1">
                   {property.highlights.slice(0, 3).map((highlight, idx) => (
-                    <div key={idx} className="flex items-start space-x-2 text-sm text-gray-400">
+                    <div key={idx} className={`flex items-start space-x-2 text-sm ${isLight ? 'text-slate-500' : 'text-gray-400'}`}>
                       <Check className="w-4 h-4 text-[--primary] mt-0.5 flex-shrink-0" />
                       <span>{highlight}</span>
                     </div>
@@ -224,7 +236,11 @@ export default function PropertyCard({ property, index = 0 }: PropertyCardProps)
         <div className="grid grid-cols-2 gap-3">
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="flex items-center justify-center space-x-2 py-3 bg-[--background-tertiary] border border-[--border-light] text-white font-semibold rounded-xl hover:bg-[--background] transition-all"
+            className={`flex items-center justify-center space-x-2 py-3 font-semibold rounded-xl transition-all ${
+              isLight 
+                ? 'bg-slate-100 border border-slate-200 text-slate-700 hover:bg-slate-200' 
+                : 'bg-[--background-tertiary] border border-[--border-light] text-white hover:bg-[--background]'
+            }`}
           >
             {isExpanded ? (
               <>

@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* Professional Two-Color Theme: Deep Slate + Warm Gold */
+/* Professional Two-Color Theme: Deep Slate + Warm Gold + White */
 :root {
   /* Primary Colors - Deep Slate/Navy */
   --background: #0f172a;
@@ -8,6 +8,14 @@
   --background-tertiary: #334155;
   --foreground: #f8fafc;
   --foreground-secondary: #e2e8f0;
+  
+  /* Light/White Sections */
+  --background-light: #ffffff;
+  --background-light-secondary: #f8fafc;
+  --background-light-tertiary: #f1f5f9;
+  --foreground-dark: #0f172a;
+  --foreground-dark-secondary: #475569;
+  --foreground-dark-muted: #64748b;
   
   /* Accent Color - Warm Gold */
   --primary: #d4a853;
@@ -21,6 +29,7 @@
   /* Borders */
   --border: #1e293b;
   --border-light: #475569;
+  --border-on-light: #e2e8f0;
   
   /* Status Colors */
   --success: #22c55e;
