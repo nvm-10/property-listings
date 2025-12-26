@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Phone, Mail, User } from 'lucide-react';
+import { X, Mail, User, MessageCircle } from 'lucide-react';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -54,8 +54,11 @@ export default function ContactModal({
     }, 3000);
   };
 
-  const handleDirectCall = () => {
-    window.location.href = `tel:${contact.phone}`;
+  const handleWhatsApp = () => {
+    // Remove non-numeric characters from phone number
+    const cleanPhone = contact.phone.replace(/\D/g, '');
+    const message = encodeURIComponent(`Hi, I'm interested in the property: ${propertyTitle}`);
+    window.open(`https://wa.me/${cleanPhone}?text=${message}`, '_blank');
   };
 
   const handleDirectEmail = () => {
@@ -133,12 +136,12 @@ export default function ContactModal({
                     <div className="grid grid-cols-2 gap-3">
                       <button
                         type="button"
-                        onClick={handleDirectCall}
-                        className="flex items-center justify-center space-x-2 p-4 border-2 border-blue-200 hover:border-blue-400 rounded-xl transition-all group"
+                        onClick={handleWhatsApp}
+                        className="flex items-center justify-center space-x-2 p-4 border-2 border-green-200 hover:border-green-400 bg-green-50 hover:bg-green-100 rounded-xl transition-all group"
                       >
-                        <Phone className="w-5 h-5 text-blue-600 group-hover:scale-110 transition-transform" />
+                        <MessageCircle className="w-5 h-5 text-green-600 group-hover:scale-110 transition-transform" />
                         <span className="font-medium text-gray-700">
-                          Call Now
+                          WhatsApp
                         </span>
                       </button>
                       <button
