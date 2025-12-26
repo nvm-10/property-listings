@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Building2, Phone, Mail, MapPin, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Building2, Phone, Mail, MapPin } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -33,20 +33,13 @@ export default function Footer() {
             <p className="text-gray-400 text-sm mb-4">
               Your trusted partner for turnkey real estate investments with guaranteed positive cash flow and high ROI.
             </p>
-            <div className="flex space-x-3">
-              <a href="#" className="w-9 h-9 bg-[--background-tertiary] border border-[--border-light] rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-[--primary] transition-all">
-                <Facebook className="w-4 h-4" />
-              </a>
-              <a href="#" className="w-9 h-9 bg-[--background-tertiary] border border-[--border-light] rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-[--primary] transition-all">
-                <Twitter className="w-4 h-4" />
-              </a>
-              <a href="#" className="w-9 h-9 bg-[--background-tertiary] border border-[--border-light] rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-[--primary] transition-all">
-                <Instagram className="w-4 h-4" />
-              </a>
-              <a href="#" className="w-9 h-9 bg-[--background-tertiary] border border-[--border-light] rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-[--primary] transition-all">
-                <Linkedin className="w-4 h-4" />
-              </a>
-            </div>
+            <a
+              href="tel:1-866-964-6088"
+              className="inline-flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-[--primary] to-[--accent] text-white rounded-lg font-medium text-sm hover:opacity-90 transition-all"
+            >
+              <Phone className="w-4 h-4" />
+              <span>Call Now</span>
+            </a>
           </div>
 
           {/* Quick Links */}
@@ -76,29 +69,25 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Resources */}
+          {/* Why Invest */}
           <div>
-            <h3 className="text-white font-bold text-lg mb-4">Resources</h3>
+            <h3 className="text-white font-bold text-lg mb-4">Why Invest</h3>
             <ul className="space-y-2">
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  Investment Guide
-                </a>
+              <li className="text-gray-400 text-sm flex items-center space-x-2">
+                <span className="w-1.5 h-1.5 bg-green-400 rounded-full"></span>
+                <span>Positive Cash Flow</span>
               </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  ROI Calculator
-                </a>
+              <li className="text-gray-400 text-sm flex items-center space-x-2">
+                <span className="w-1.5 h-1.5 bg-green-400 rounded-full"></span>
+                <span>High ROI Properties</span>
               </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  Market Analysis
-                </a>
+              <li className="text-gray-400 text-sm flex items-center space-x-2">
+                <span className="w-1.5 h-1.5 bg-green-400 rounded-full"></span>
+                <span>Tenant Occupied</span>
               </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">
-                  FAQ
-                </a>
+              <li className="text-gray-400 text-sm flex items-center space-x-2">
+                <span className="w-1.5 h-1.5 bg-green-400 rounded-full"></span>
+                <span>Turnkey Properties</span>
               </li>
             </ul>
           </div>
@@ -135,17 +124,9 @@ export default function Footer() {
             <p className="text-gray-500 text-sm">
               © {currentYear} PropertyHub. All rights reserved.
             </p>
-            <div className="flex space-x-6">
-              <a href="#" className="text-gray-500 hover:text-white transition-colors text-sm">
-                Privacy Policy
-              </a>
-              <a href="#" className="text-gray-500 hover:text-white transition-colors text-sm">
-                Terms of Service
-              </a>
-              <a href="#" className="text-gray-500 hover:text-white transition-colors text-sm">
-                Cookie Policy
-              </a>
-            </div>
+            <p className="text-gray-600 text-xs">
+              Investment properties with verified cash flow and ROI
+            </p>
           </div>
         </div>
       </div>

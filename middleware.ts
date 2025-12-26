@@ -13,8 +13,8 @@ export default withAuth(
         const publicRoutes = ['/', '/properties', '/about', '/closed-deals'];
         const pathname = req.nextUrl.pathname;
         
-        // Allow public routes
-        if (publicRoutes.includes(pathname) || pathname.startsWith('/api/auth')) {
+        // Allow public routes and property detail pages
+        if (publicRoutes.includes(pathname) || pathname.startsWith('/api/auth') || pathname.startsWith('/properties/')) {
           return true;
         }
         

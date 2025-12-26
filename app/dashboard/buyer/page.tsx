@@ -181,13 +181,13 @@ export default function BuyerDashboard() {
                   <TrendingUp className="w-5 h-5 text-green-400" />
                   <span className="font-medium text-gray-300">Featured Deals</span>
                 </Link>
-                <Link
-                  href="/contact"
+                <a
+                  href="tel:1-866-964-6088"
                   className="flex items-center space-x-3 p-3 hover:bg-[--background-tertiary] rounded-xl transition-colors"
                 >
                   <MapPin className="w-5 h-5 text-purple-400" />
-                  <span className="font-medium text-gray-300">Contact Agent</span>
-                </Link>
+                  <span className="font-medium text-gray-300">Call: 1-866-964-6088</span>
+                </a>
               </div>
             </div>
           </motion.div>
