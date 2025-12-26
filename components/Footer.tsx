@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Building2, Phone, Mail, MapPin } from 'lucide-react';
+import { Building2, MessageCircle, Mail, MapPin } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -34,11 +34,13 @@ export default function Footer() {
               Your trusted partner for turnkey real estate investments with guaranteed positive cash flow and high ROI.
             </p>
             <a
-              href="tel:1-866-964-6088"
-              className="inline-flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-[--primary] to-[--accent] text-white rounded-lg font-medium text-sm hover:opacity-90 transition-all"
+              href="https://wa.me/18669646088?text=Hi%2C%20I%27m%20interested%20in%20your%20properties"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center space-x-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium text-sm transition-all"
             >
-              <Phone className="w-4 h-4" />
-              <span>Call Now</span>
+              <MessageCircle className="w-4 h-4" />
+              <span>WhatsApp</span>
             </a>
           </div>
 
@@ -97,9 +99,9 @@ export default function Footer() {
             <h3 className="text-white font-bold text-lg mb-4">Contact Us</h3>
             <ul className="space-y-3">
               <li>
-                <a href="tel:1-866-964-6088" className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors text-sm">
-                  <Phone className="w-4 h-4 text-[--primary-light]" />
-                  <span>1-866-964-6088</span>
+                <a href="https://wa.me/18669646088?text=Hi%2C%20I%27m%20interested%20in%20your%20properties" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-gray-400 hover:text-green-400 transition-colors text-sm">
+                  <MessageCircle className="w-4 h-4 text-green-400" />
+                  <span>WhatsApp Us</span>
                 </a>
               </li>
               <li>

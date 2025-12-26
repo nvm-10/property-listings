@@ -14,7 +14,7 @@ import {
   DollarSign,
   Calendar,
   Building2,
-  Phone,
+  MessageCircle,
   Mail,
   ArrowLeft,
   Check,
@@ -324,9 +324,14 @@ export default function PropertyDetailPage() {
                       </div>
                     </div>
                     <div className="space-y-2 text-sm">
-                      <a href={`tel:${property.contact.phone}`} className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors">
-                        <Phone className="w-4 h-4" />
-                        <span>{property.contact.phone}</span>
+                      <a 
+                        href={`https://wa.me/${property.contact.phone.replace(/\D/g, '')}?text=${encodeURIComponent(`Hi, I'm interested in: ${property.title}`)}`}
+                        target="_blank"
+                        rel="noopener noreferrer" 
+                        className="flex items-center space-x-2 text-gray-400 hover:text-green-400 transition-colors"
+                      >
+                        <MessageCircle className="w-4 h-4 text-green-400" />
+                        <span>WhatsApp</span>
                       </a>
                       <a href={`mailto:${property.contact.email}`} className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors">
                         <Mail className="w-4 h-4" />

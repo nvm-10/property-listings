@@ -1,7 +1,7 @@
 'use client';
 
 import { useProperties } from '@/contexts/PropertyContext';
-import { Building2, Calendar, CheckCircle, Clock, DollarSign, MapPin, Phone, Mail, User, TrendingUp, Home } from 'lucide-react';
+import { Building2, Calendar, CheckCircle, Clock, DollarSign, MapPin, MessageCircle, Mail, User, TrendingUp, Home } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
@@ -207,11 +207,13 @@ export default function ClosedDealsPage() {
                         </div>
                         <div className="flex items-center gap-2">
                           <a
-                            href={`tel:${property.contact.phone}`}
-                            className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all text-sm font-medium"
+                            href={`https://wa.me/${property.contact.phone.replace(/\D/g, '')}?text=${encodeURIComponent(`Hi, I'm inquiring about: ${property.title}`)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-all text-sm font-medium"
                           >
-                            <Phone className="w-4 h-4" />
-                            Call
+                            <MessageCircle className="w-4 h-4" />
+                            WhatsApp
                           </a>
                           <a
                             href={`mailto:${property.contact.email}`}

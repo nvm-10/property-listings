@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { Menu, X, Home, Building2, Mail, Phone, User, LogOut, FileCheck } from 'lucide-react';
+import { Menu, X, Home, Building2, Mail, MessageCircle, User, LogOut, FileCheck } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSession, signOut } from 'next-auth/react';
 import AuthModal from './AuthModal';
@@ -67,11 +67,13 @@ export default function Navbar() {
           {/* CTA Buttons / User Menu */}
           <div className="hidden md:flex items-center space-x-4">
             <a
-              href="tel:1-866-964-6088"
-              className="flex items-center space-x-2 text-sm font-medium text-gray-300 hover:text-[--primary-light] transition-colors"
+              href="https://wa.me/18669646088?text=Hi%2C%20I%27m%20interested%20in%20your%20properties"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center space-x-2 text-sm font-medium text-gray-300 hover:text-green-400 transition-colors"
             >
-              <Phone className="w-4 h-4" />
-              <span>1-866-964-6088</span>
+              <MessageCircle className="w-4 h-4" />
+              <span>WhatsApp</span>
             </a>
             
             {status === 'authenticated' && session?.user ? (
