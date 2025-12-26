@@ -238,7 +238,7 @@ export default function PropertyCard({ property, index = 0, variant = 'dark' }: 
             onClick={() => setIsExpanded(!isExpanded)}
             className={`flex items-center justify-center space-x-2 py-3 font-semibold rounded-xl transition-all ${
               isLight 
-                ? 'bg-slate-100 border border-slate-200 text-slate-700 hover:bg-slate-200' 
+                ? 'bg-[--background] border border-[--background] text-white hover:bg-[--background-secondary]' 
                 : 'bg-[--background-tertiary] border border-[--border-light] text-white hover:bg-[--background]'
             }`}
           >
