@@ -256,7 +256,11 @@ export default function PropertyCard({ property, index = 0, variant = 'dark' }: 
           </button>
           <button
             onClick={() => setIsContactModalOpen(true)}
-            className="flex items-center justify-center space-x-2 py-3 bg-[--primary] text-[--background] font-bold rounded-xl hover:bg-[--primary-light] transition-all duration-200"
+            className={`flex items-center justify-center space-x-2 py-3 font-bold rounded-xl transition-all duration-200 ${
+              isLight
+                ? 'bg-amber-600 text-white hover:bg-amber-700'
+                : 'bg-[--primary] text-[--background] hover:bg-[--primary-light]'
+            }`}
           >
             <MessageCircle className="w-4 h-4" />
             <span>Contact</span>

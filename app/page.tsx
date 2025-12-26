@@ -106,10 +106,10 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-[--foreground-dark] mb-4">
-              Featured <span className="text-[--primary-dark]">Properties</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+              Featured <span className="text-amber-600">Properties</span>
             </h2>
-            <p className="text-xl text-[--foreground-dark-secondary] max-w-2xl mx-auto">
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
               Discover verified property listings from sellers
             </p>
           </motion.div>
