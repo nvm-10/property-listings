@@ -62,30 +62,39 @@ export default function ContactModal({
     window.location.href = `mailto:${contact.email}?subject=Inquiry about ${propertyTitle}`;
   };
 
-  return (
-    <AnimatePresence>
-      {isOpen && (
-        <>
-          {/* Backdrop */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={onClose}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100]"
-          />
+  if (!isOpen) return null;
 
-          {/* Modal */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            onClick={onClose}
-            className="fixed inset-0 z-[101] flex items-center justify-center p-4">
+  return (
+    <div className="fixed inset-0 z-[9999]">
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={onClose}
+              className="fixed inset-0 bg-black/70 backdrop-blur-sm"
+              style={{ zIndex: 9999 }}
+            />
+
+            {/* Modal Container */}
             <div 
-              onClick={(e) => e.stopPropagation()}
-              className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+              className="fixed inset-0 overflow-y-auto"
+              style={{ zIndex: 10000 }}
             >
+              <div 
+                className="flex min-h-full items-center justify-center p-4"
+                onClick={onClose}
+              >
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                  onClick={(e) => e.stopPropagation()}
+                  className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full relative"
+                >
               {/* Header */}
               <div className="relative p-6 border-b border-gray-200 bg-gradient-to-r from-[--primary] to-[--accent]">
                 <button
@@ -260,10 +269,12 @@ export default function ContactModal({
                   </motion.div>
                 )}
               </div>
+            </motion.div>
+              </div>
             </div>
-          </motion.div>
-        </>
-      )}
-    </AnimatePresence>
+          </>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }
