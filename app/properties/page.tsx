@@ -125,7 +125,7 @@ export default function PropertiesPage() {
       </section>
 
       {/* Filters */}
-      <section className="py-4 md:py-6 bg-[#121827] border-b border-[--border] sticky top-20 z-40 shadow-xl">
+      <section className="py-4 md:py-6 bg-[#121827] border-b border-[--border]">
         <div className="container mx-auto px-4">
           <div className="flex flex-col gap-3">
             {/* Main Filter Row */}
