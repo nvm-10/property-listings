@@ -98,7 +98,9 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
                 stiffness: 300,
                 damping: 30,
               }}
-              className="bg-[#1a1f2e] rounded-3xl shadow-2xl max-w-md w-full overflow-hidden border border-gray-700 my-auto max-h-[90vh] overflow-y-auto"
+              onClick={(e) => e.stopPropagation()}
+              className="rounded-3xl shadow-2xl max-w-md w-full overflow-hidden border border-slate-600 my-auto max-h-[90vh] overflow-y-auto"
+              style={{ backgroundColor: '#0f172a' }}
             >
               {/* Animated Header */}
               <div className="relative overflow-hidden">
@@ -155,6 +157,7 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
                 initial="hidden"
                 animate="visible"
                 className="p-6"
+                style={{ backgroundColor: '#0f172a' }}
               >
                 {/* Google Sign In Button */}
                 <motion.button

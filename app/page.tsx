@@ -129,7 +129,7 @@ export default function Home() {
           >
             <Link
               href="/properties"
-              className="inline-flex items-center space-x-2 px-10 py-5 bg-[--background] text-white rounded-xl text-lg font-bold hover:bg-[--background-secondary] transition-all shadow-lg"
+              className="inline-flex items-center space-x-2 px-10 py-5 bg-slate-800 text-white rounded-xl text-lg font-bold hover:bg-slate-700 transition-all shadow-lg"
             >
               <span>View All Properties</span>
               <ArrowRight className="w-5 h-5" />
