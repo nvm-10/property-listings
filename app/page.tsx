@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle, MessageCircle } from 'lucide-react';
 import Link from 'next/link';
 import PropertyCard from '@/components/PropertyCard';
 import { useProperties } from '@/contexts/PropertyContext';
@@ -41,19 +41,19 @@ export default function Home() {
               className="inline-flex items-center space-x-2 px-4 py-2 bg-[--primary]/10 border border-[--primary]/20 rounded-full mb-6"
             >
               <div className="w-2 h-2 bg-[--primary] rounded-full animate-pulse" />
-              <span className="text-sm text-gray-300 font-medium">Live Property Listings</span>
+              <span className="text-sm text-gray-300 font-medium">Detroit Rental Properties - Michigan Real Estate</span>
             </motion.div>
 
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-              Invest in{' '}
+              Detroit Rental Properties{' '}
               <span className="text-[--primary]">
-                Turnkey Properties
+                for Canadian Investors
               </span>
-              <br />with High ROI
+              <br />and Section 8 Tenants
             </h1>
 
             <p className="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-              Discover verified rental properties with positive cash flow. Connect directly with sellers and start building your portfolio.
+              Invest in Michigan real estate with verified Detroit rental properties. Perfect for Canadians investing in the USA seeking turnkey rental properties with Section 8 tenants and guaranteed cash flow.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
@@ -65,10 +65,13 @@ export default function Home() {
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <a
-                href="tel:1-866-964-6088"
-                className="px-8 py-4 bg-transparent border-2 border-[--border-light] text-white rounded-xl font-semibold hover:border-[--primary] hover:text-[--primary] transition-all flex items-center space-x-2"
+                href="https://wa.me/18669646088?text=Hi%2C%20I%27m%20interested%20in%20Detroit%20rental%20properties"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-4 bg-transparent border-2 border-[--border-light] text-white rounded-xl font-semibold hover:border-green-400 hover:text-green-400 transition-all flex items-center space-x-2"
               >
-                <span>Call: 1-866-964-6088</span>
+                <MessageCircle className="w-5 h-5" />
+                <span>WhatsApp Us</span>
               </a>
             </div>
 
@@ -107,10 +110,10 @@ export default function Home() {
             className="text-center mb-12"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-              Featured <span className="text-amber-600">Properties</span>
+              Featured Detroit <span className="text-amber-600">Rental Properties</span>
             </h2>
             <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-              Discover verified property listings from sellers
+              Turnkey Michigan real estate with Section 8 tenants. Ideal for Canadian investors seeking stable Detroit rental properties with proven cash flow.
             </p>
           </motion.div>
 
@@ -163,14 +166,14 @@ export default function Home() {
               className="inline-flex items-center space-x-2 px-4 py-2 bg-[--primary]/10 border border-[--primary]/20 rounded-full mb-6"
             >
               <div className="w-2 h-2 bg-[--primary] rounded-full animate-pulse" />
-              <span className="text-sm text-gray-300 font-medium">Start Your Investment Journey</span>
+              <span className="text-sm text-gray-300 font-medium">Canadian Investors Welcome - Michigan Real Estate</span>
             </motion.div>
 
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Ready to <span className="text-[--primary]">Start Investing?</span>
+              Ready to <span className="text-[--primary]">Invest in Detroit?</span>
             </h2>
             <p className="text-xl mb-8 text-gray-400">
-              Connect with property sellers and find your next investment opportunity with guaranteed positive cash flow
+              Canadians investing in the USA choose Michigan real estate for stable returns. Find Detroit rental properties with Section 8 tenants and guaranteed positive cash flow.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
@@ -181,10 +184,13 @@ export default function Home() {
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <a
-                href="tel:1-866-964-6088"
-                className="px-8 py-4 bg-transparent border-2 border-[--border-light] text-white rounded-xl font-semibold hover:border-[--primary] hover:text-[--primary] transition-all flex items-center space-x-2"
+                href="https://wa.me/18669646088?text=Hi%2C%20I%27m%20interested%20in%20Detroit%20rental%20properties"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-4 bg-transparent border-2 border-[--border-light] text-white rounded-xl font-semibold hover:border-green-400 hover:text-green-400 transition-all flex items-center space-x-2"
               >
-                <span>Call: 1-866-964-6088</span>
+                <MessageCircle className="w-5 h-5" />
+                <span>WhatsApp Us</span>
               </a>
             </div>
           </motion.div>

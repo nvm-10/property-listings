@@ -1,6 +1,6 @@
-# 🏠 PropertyHub - Modern Real Estate Listing Platform
+# 🏠 PropertyHub - Detroit Rental Properties for Canadian Investors
 
-A stunning, modern real estate property listing website built with the latest technologies and best design practices.
+A modern platform connecting Canadian investors with turnkey Detroit rental properties featuring Section 8 tenants and guaranteed cash flow. Specializing in Michigan real estate investments.
 
 ## ✨ Features
 
@@ -21,22 +21,24 @@ A stunning, modern real estate property listing website built with the latest te
 - **Lucide React** - Beautiful, consistent icons
 - **React Hook Form** - Form management
 - **Zod** - Schema validation
+- **jsPDF** - PDF generation for property details
 
 ### 💼 Key Features
 
-1. **Hero Section** - Eye-catching full-screen hero with gradient overlay
-2. **Property Listings** - Grid layout with beautiful cards
-3. **Advanced Filtering** - Search, filter by type, and sort properties
+1. **Detroit-Focused Listings** - Curated Detroit rental properties and Michigan real estate
+2. **Section 8 Ready** - Properties with Section 8 tenants for guaranteed income
+3. **Canadian Investor Friendly** - Streamlined process for Canadians investing in the USA
 4. **Property Cards** - Show:
-   - Property images with hover effects
-   - Price and ROI metrics
-   - Monthly cash flow
+   - Detroit property images with hover effects
+   - Price and ROI metrics for Michigan real estate
+   - Monthly cash flow from Section 8 tenants
    - Property features (beds, baths, sqft)
    - Tenant occupancy status
    - Property type badges
    - Status indicators (Available/Pending/Sold)
-
-5. **Statistics Section** - Display impressive metrics
+5. **Investment Blog** - Educational content for Canadian investors about Detroit rental properties
+6. **PDF Download** - Download professional property details as PDF documents for offline viewing and sharing
+7. **Statistics Section** - Display impressive metrics
 6. **Call-to-Action Sections** - Strategic CTAs throughout
 7. **Smooth Scroll Animations** - Elements animate on scroll
 8. **Sticky Navigation** - Transparent header that becomes solid on scroll
@@ -58,6 +60,8 @@ property-listings/
 │   └── properties.ts       # Sample property data
 ├── types/
 │   └── property.ts         # TypeScript interfaces
+├── utils/
+│   └── pdfGenerator.ts     # PDF generation utility
 └── public/                 # Static assets
 ```
 
@@ -184,9 +188,43 @@ Adjust animation timings in components using Framer Motion props:
 - Sort options (price, ROI, featured)
 - Results count
 
+## 📥 PDF Download Feature
+
+Each property can be downloaded as a **comprehensive investment analysis PDF** that includes:
+
+- **Property Title & Price** - Prominent display with red pricing
+- **UNLEVERAGED Analysis** - Full cash purchase scenario with ROI, income/expense breakdown
+- **LEVERAGED Analysis** - Financed purchase scenario (25% down) with ROI, mortgage calculations
+- **Side-by-Side Comparison** - Professional tables comparing both investment scenarios
+- **Detailed Financial Projections**:
+  - Monthly and yearly rental income (with 4% vacancy rate)
+  - Property taxes, insurance, maintenance estimates
+  - Property management fees (10%)
+  - Mortgage calculations (7% interest, 30-year term for leveraged)
+  - Net income projections
+- **House Details** - Bedrooms, bathrooms, lot size, square footage, garage, projected rent
+- **Legal Disclaimer** - Investment analysis disclaimer
+- **Professional Formatting** - Clean tabular layout matching industry standards
+
+### Usage
+
+**From Property Cards:**
+- Click the "PDF" button on any property card to instantly download
+
+**From Property Detail Page:**
+- Click the "Download Details" button in the sidebar
+
+### Technical Implementation
+
+The PDF generator (`utils/pdfGenerator.ts`) uses jsPDF to create:
+- Multi-page layouts with automatic page breaks
+- Color-coded sections matching the website theme
+- Formatted pricing and financial metrics
+- Wrapped text for descriptions and highlights
+- Footer with generation date and property ID
+
 ## 🔮 Future Enhancements
 
-- Property detail pages
 - Contact form
 - About page
 - Blog/News section

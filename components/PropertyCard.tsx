@@ -17,9 +17,11 @@ import {
   Calendar,
   Home,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  Download
 } from 'lucide-react';
 import ContactModal from './ContactModal';
+import { generatePropertyPDF } from '@/utils/pdfGenerator';
 
 interface PropertyCardProps {
   property: Property;
@@ -31,6 +33,7 @@ export default function PropertyCard({ property, index = 0, variant = 'dark' }: 
   const isLight = variant === 'light';
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
 
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('en-US', {
@@ -38,6 +41,18 @@ export default function PropertyCard({ property, index = 0, variant = 'dark' }: 
       currency: 'USD',
       maximumFractionDigits: 0,
     }).format(price);
+  };
+
+  const handleDownloadPDF = async (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIsDownloading(true);
+    try {
+      await generatePropertyPDF(property);
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+    } finally {
+      setIsDownloading(false);
+    }
   };
 
   return (
@@ -233,10 +248,10 @@ export default function PropertyCard({ property, index = 0, variant = 'dark' }: 
         )}
 
         {/* Action Buttons */}
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-3 gap-2">
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className={`flex items-center justify-center space-x-2 py-3 font-semibold rounded-xl transition-all ${
+            className={`flex items-center justify-center space-x-1 py-3 font-semibold rounded-xl transition-all text-sm ${
               isLight 
                 ? 'bg-slate-800 text-white hover:bg-slate-700' 
                 : 'bg-[--background-tertiary] border border-[--border-light] text-white hover:bg-[--background]'
@@ -245,25 +260,37 @@ export default function PropertyCard({ property, index = 0, variant = 'dark' }: 
             {isExpanded ? (
               <>
                 <ChevronUp className="w-4 h-4" />
-                <span>Less Info</span>
+                <span className="hidden sm:inline">Less</span>
               </>
             ) : (
               <>
                 <ChevronDown className="w-4 h-4" />
-                <span>More Info</span>
+                <span className="hidden sm:inline">More</span>
               </>
             )}
           </button>
           <button
+            onClick={handleDownloadPDF}
+            disabled={isDownloading}
+            className={`flex items-center justify-center space-x-1 py-3 font-semibold rounded-xl transition-all text-sm disabled:opacity-50 disabled:cursor-not-allowed ${
+              isLight 
+                ? 'bg-slate-600 text-white hover:bg-slate-500' 
+                : 'bg-[--background-tertiary] border border-[--border-light] text-white hover:bg-[--background]'
+            }`}
+          >
+            <Download className="w-4 h-4" />
+            <span className="hidden sm:inline">{isDownloading ? '...' : 'PDF'}</span>
+          </button>
+          <button
             onClick={() => setIsContactModalOpen(true)}
-            className={`flex items-center justify-center space-x-2 py-3 font-bold rounded-xl transition-all duration-200 ${
+            className={`flex items-center justify-center space-x-1 py-3 font-bold rounded-xl transition-all duration-200 text-sm ${
               isLight
                 ? 'bg-amber-600 text-white hover:bg-amber-700'
                 : 'bg-[--primary] text-[--background] hover:bg-[--primary-light]'
             }`}
           >
             <MessageCircle className="w-4 h-4" />
-            <span>Contact</span>
+            <span className="hidden sm:inline">Contact</span>
           </button>
         </div>
       </div>

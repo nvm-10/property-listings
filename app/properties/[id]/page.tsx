@@ -20,10 +20,12 @@ import {
   Check,
   Home,
   Star,
-  User
+  User,
+  Download
 } from 'lucide-react';
 import { useProperties } from '@/contexts/PropertyContext';
 import ContactModal from '@/components/ContactModal';
+import { generatePropertyPDF } from '@/utils/pdfGenerator';
 
 export default function PropertyDetailPage() {
   const params = useParams();
@@ -33,6 +35,7 @@ export default function PropertyDetailPage() {
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState(0);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
 
   useEffect(() => {
     const id = params.id as string;
@@ -80,6 +83,18 @@ export default function PropertyDetailPage() {
       currency: 'USD',
       maximumFractionDigits: 0,
     }).format(price);
+  };
+
+  const handleDownloadPDF = async () => {
+    if (!property) return;
+    setIsDownloading(true);
+    try {
+      await generatePropertyPDF(property);
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+    } finally {
+      setIsDownloading(false);
+    }
   };
 
   return (
@@ -301,6 +316,16 @@ export default function PropertyDetailPage() {
                     <span className="text-2xl font-bold text-[--success]">{formatPrice(property.cashFlow)}</span>
                   </div>
                 </div>
+
+                {/* Download PDF Button */}
+                <button
+                  onClick={handleDownloadPDF}
+                  disabled={isDownloading}
+                  className="w-full py-4 bg-[--background-tertiary] border border-[--border-light] text-white font-bold rounded-xl hover:bg-[--background] transition-all duration-200 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  <Download className="w-5 h-5" />
+                  <span>{isDownloading ? 'Generating...' : 'Download Details'}</span>
+                </button>
 
                 {/* Contact Button */}
                 <button

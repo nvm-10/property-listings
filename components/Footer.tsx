@@ -23,7 +23,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-gray-400 text-sm mb-4">
-              Your trusted partner for turnkey real estate investments with guaranteed positive cash flow and high ROI.
+              Detroit rental properties and Michigan real estate for Canadian investors. Turnkey properties with Section 8 tenants and guaranteed cash flow.
             </p>
             <a
               href="https://wa.me/18669646088?text=Hi%2C%20I%27m%20interested%20in%20your%20properties"
@@ -56,6 +56,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/blog" className="text-gray-400 hover:text-white transition-colors text-sm">
+                  Investment Guide
+                </Link>
+              </li>
+              <li>
                 <Link href="/role-selection" className="text-gray-400 hover:text-white transition-colors text-sm">
                   Get Started
                 </Link>
@@ -65,23 +70,23 @@ export default function Footer() {
 
           {/* Why Invest */}
           <div>
-            <h3 className="text-white font-bold text-lg mb-4">Why Invest</h3>
+            <h3 className="text-white font-bold text-lg mb-4">Detroit & Michigan</h3>
             <ul className="space-y-2">
               <li className="text-gray-400 text-sm flex items-center space-x-2">
                 <span className="w-1.5 h-1.5 bg-[--primary] rounded-full"></span>
-                <span>Positive Cash Flow</span>
+                <span>Detroit Rental Properties</span>
               </li>
               <li className="text-gray-400 text-sm flex items-center space-x-2">
                 <span className="w-1.5 h-1.5 bg-[--primary] rounded-full"></span>
-                <span>High ROI Properties</span>
+                <span>Michigan Real Estate</span>
               </li>
               <li className="text-gray-400 text-sm flex items-center space-x-2">
                 <span className="w-1.5 h-1.5 bg-[--primary] rounded-full"></span>
-                <span>Tenant Occupied</span>
+                <span>Section 8 Tenants</span>
               </li>
               <li className="text-gray-400 text-sm flex items-center space-x-2">
                 <span className="w-1.5 h-1.5 bg-[--primary] rounded-full"></span>
-                <span>Turnkey Properties</span>
+                <span>Canadian Investors Welcome</span>
               </li>
             </ul>
           </div>
@@ -119,7 +124,7 @@ export default function Footer() {
               © {currentYear} PropertyHub. All rights reserved.
             </p>
             <p className="text-gray-600 text-xs">
-              Investment properties with verified cash flow and ROI
+              Detroit rental properties | Michigan real estate | Canadian investors | Section 8 tenants
             </p>
           </div>
         </div>

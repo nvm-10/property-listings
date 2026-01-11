@@ -27,6 +27,7 @@ export default function Navbar() {
     { href: '/', label: 'Home', icon: Home },
     { href: '/properties', label: 'Properties', icon: Building2 },
     { href: '/closed-deals', label: 'Closed Deals', icon: FileCheck },
+    { href: '/blog', label: 'Investment Guide', icon: Building2 },
   ];
 
   return (

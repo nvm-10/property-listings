@@ -19,8 +19,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PropertyHub - Real Estate Listings Platform",
-  description: "Browse and list real estate properties. Connect buyers with sellers for investment opportunities.",
+  title: "Detroit Rental Properties | Michigan Real Estate for Canadian Investors",
+  description: "Invest in Detroit rental properties and Michigan real estate. Turnkey properties with Section 8 tenants perfect for Canadians investing in the USA. Guaranteed positive cash flow and high ROI.",
 };
 
 export default function RootLayout({

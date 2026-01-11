@@ -211,7 +211,7 @@ export default function SellerDashboard() {
             </div>
             <div>
               <h1 className="text-3xl font-bold text-white">Seller Dashboard</h1>
-              <p className="text-gray-400">Add your property listing</p>
+              <p className="text-gray-400">List your Detroit rental property or Michigan real estate</p>
             </div>
           </div>
         </motion.div>
@@ -278,7 +278,7 @@ export default function SellerDashboard() {
                   value={formData.title}
                   onChange={(e) => setFormData({...formData, title: e.target.value})}
                   className="w-full px-4 py-3 bg-[--background-tertiary] text-white placeholder-gray-500 border border-[--border-light] rounded-xl focus:ring-2 focus:ring-[--primary] focus:border-transparent outline-none transition"
-                  placeholder="Modern Family Home"
+                  placeholder="Detroit Rental Property - Fully Renovated"
                 />
               </div>
 

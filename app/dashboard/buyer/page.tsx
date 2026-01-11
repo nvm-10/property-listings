@@ -74,7 +74,7 @@ export default function BuyerDashboard() {
                 <h1 className="text-3xl font-bold text-white">
                   Welcome back, {session?.user?.name?.split(' ')[0]}!
                 </h1>
-                <p className="text-gray-400">Your investment dashboard</p>
+                <p className="text-gray-400">Explore Detroit rental properties and Michigan real estate</p>
               </div>
             </div>
             <Link
@@ -143,7 +143,7 @@ export default function BuyerDashboard() {
                 No saved properties yet
               </h3>
               <p className="text-gray-400 mb-6">
-                Start exploring and save properties you're interested in
+                Start exploring Detroit rental properties and Michigan real estate with Section 8 tenants
               </p>
               <Link
                 href="/properties"
@@ -209,9 +209,9 @@ export default function BuyerDashboard() {
                 <span className="text-[--background] font-bold">1</span>
               </div>
               <div>
-                <h4 className="font-bold text-white mb-1">Browse Properties</h4>
+                <h4 className="font-bold text-white mb-1">Browse Detroit Rental Properties</h4>
                 <p className="text-sm text-gray-400">
-                  Explore available property listings from sellers
+                  Explore Michigan real estate perfect for Canadian investors
                 </p>
               </div>
             </div>
@@ -220,9 +220,9 @@ export default function BuyerDashboard() {
                 <span className="text-[--background] font-bold">2</span>
               </div>
               <div>
-                <h4 className="font-bold text-white mb-1">Make an Offer</h4>
+                <h4 className="font-bold text-white mb-1">Invest with Confidence</h4>
                 <p className="text-sm text-gray-400">
-                  Connect with sellers to negotiate and close the deal
+                  Section 8 tenant properties with guaranteed cash flow
                 </p>
               </div>
             </div>

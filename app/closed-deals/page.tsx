@@ -40,7 +40,7 @@ export default function ClosedDealsPage() {
               Closed <span className="text-[--primary]">Deals</span>
             </h1>
             <p className="text-xl text-gray-300 mb-2">
-              Recently sold and pending properties
+              Detroit rental properties and Michigan real estate recently sold to investors
             </p>
             <p className="text-gray-500">
               {closedProperties.length} deal{closedProperties.length !== 1 ? 's' : ''} closed
@@ -64,7 +64,7 @@ export default function ClosedDealsPage() {
               <Building2 className="w-10 h-10 text-[--primary]" />
             </div>
             <h3 className="text-2xl font-semibold text-slate-800 mb-2">No Closed Deals Yet</h3>
-            <p className="text-slate-500 mb-8">Check back soon to see completed transactions</p>
+            <p className="text-slate-500 mb-8">Check back soon to see completed Detroit rental property transactions for Canadian investors</p>
             <Link
               href="/properties"
               className="btn-3d-primary inline-flex items-center gap-2 px-8 py-4 text-lg font-semibold"
